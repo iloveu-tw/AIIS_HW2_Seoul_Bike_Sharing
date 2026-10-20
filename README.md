@@ -60,6 +60,14 @@ python3 main.py
 
 此截圖顯示加分 2 的入口與版位；計算功能尚未啟用，因此不將它列為已完成的加分結果。
 
+## Archify 專案流程圖
+
+[開啟可互動流程圖](https://iloveu-tw.github.io/AIIS_HW2_Seoul_Bike_Sharing/architecture/crisp_dm_workflow.html) · [查看可重建 JSON 來源](docs/architecture/crisp_dm_workflow.json) · [查看驗證紀錄](docs/architecture/crisp_dm_workflow.visual-check.json)
+
+![Archify 繪製的 Seoul Bike CRISP-DM 專案流程，含兩個預測任務分流與目前網站交付狀態](docs/screenshots/2026-10-20-archify-crisp-dm-workflow.png)
+
+圖中的 P1／P2 與 P4／P5 為了在單一畫面清楚閱讀而合併顯示；`main.py` 仍逐階段執行。圖表、報告及網站成果已交付；自訂 CSV 重新計算尚未啟用。Archify showcase 驗證為 9／9、0 錯誤、0 警告；瀏覽器檢查涵蓋四種桌面尺寸與明暗主題。圖中文字採繁體中文，Archify 檢視器的固定控制項顯示英文。
+
 ## 規格與交接
 
 - [完整規格](docs/spec.md)

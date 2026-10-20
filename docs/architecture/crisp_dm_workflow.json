@@ -1,0 +1,27 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {"title": "Seoul Bike Sharing｜CRISP-DM 專案流程", "quality_profile": "showcase"},
+  "lanes": [{"id": "project", "label": "已實作的正式分析與網站交付"}],
+  "mainPath": ["p0", "p1p2", "p3", "current", "p4p5", "p6pages"],
+  "nodes": [
+    {"id": "p0", "lane": "project", "col": 0, "type": "database", "label": "P0 資料來源", "sublabel": "Kaggle · SHA-256"},
+    {"id": "p1p2", "lane": "project", "col": 1, "type": "backend", "label": "P1 / P2", "sublabel": "研究定義 · 資料檢查"},
+    {"id": "p3", "lane": "project", "col": 2, "type": "backend", "label": "P3 雙任務切分", "sublabel": "14 個編碼候選欄位"},
+    {"id": "current", "lane": "project", "col": 3, "type": "frontend", "label": "Problem 1", "sublabel": "X(t) → y(t)"},
+    {"id": "next", "lane": "project", "col": 3, "type": "frontend", "label": "Problem 2", "sublabel": "X(t) → y(t+1)", "yOffset": 90},
+    {"id": "p4p5", "lane": "project", "col": 4, "type": "security", "label": "P4 / P5", "sublabel": "四法選擇 · 驗證與測試", "width": 145},
+    {"id": "p6pages", "lane": "project", "col": 5, "type": "cloud", "label": "P6 / Pages", "sublabel": "正式成果已部署", "width": 135}
+  ],
+  "edges": [
+    {"from": "p0", "to": "p1p2"}, {"from": "p1p2", "to": "p3"},
+    {"from": "p3", "to": "current", "label": "當小時"},
+    {"from": "p3", "to": "next", "label": "下一小時", "role": "branch"},
+    {"from": "current", "to": "p4p5"}, {"from": "next", "to": "p4p5", "role": "branch"},
+    {"from": "p4p5", "to": "p6pages", "label": "圖表／結論／JSON"}
+  ],
+  "cards": [
+    {"dot": "emerald", "title": "模型選擇規則", "items": ["總候選 14 欄符合 10 < p < 30；最佳 k 可較少", "時間驗證選方案，再檢查留出期；下一小時不使用 t+1 實測值"]},
+    {"dot": "violet", "title": "網站狀態", "items": ["main.py 產生報表與成果包；Actions 發布已提交成果", "自訂 CSV 目前僅有入口，瀏覽器重新計算尚未啟用"]}
+  ]
+}
