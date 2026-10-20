@@ -126,6 +126,24 @@
     .dot { fill:#54c7ef; stroke:#173b52; stroke-width:2; cursor:pointer; transition:r .15s,fill .15s; }
     .dot:hover,.dot.active { fill:#b5efff; stroke:#fff; filter:drop-shadow(0 0 7px #73d9ff); }
     .best-ring { fill:none; stroke:#ffd09b; stroke-width:2; filter:drop-shadow(0 0 5px #ffbc79); pointer-events:none; }
+    .comparison { margin-top:17px; padding:24px 27px 22px; border-radius:26px; }
+    .comparison .section-head { margin-bottom:14px; }
+    .comparison-legend { position:relative; display:flex; flex-wrap:wrap; gap:7px; margin:0 0 15px; }
+    .comparison-legend button { display:inline-flex; align-items:center; gap:7px; padding:7px 10px; border:1px solid rgba(201,235,248,.22); border-radius:11px; color:#d9ecf5; background:rgba(5,29,45,.48); font:600 11px -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif; cursor:pointer; }
+    .comparison-legend button:hover,.comparison-legend button[aria-current="true"] { background:rgba(116,197,228,.19); border-color:rgba(189,235,251,.55); }
+    .comparison-swatch { display:inline-block; width:17px; border-top:3px solid var(--swatch); }
+    .comparison-swatch.baseline { border-top-style:dashed; }
+    svg.comparison-chart { height:245px; }
+    .comparison-line { fill:none; stroke-width:2.7; stroke-linecap:round; stroke-linejoin:round; }
+    .comparison-point { cursor:pointer; stroke:#09283b; stroke-width:1.6; }
+    .comparison-point:hover,.comparison-point:focus-visible { stroke:#fff; stroke-width:2.5; filter:drop-shadow(0 0 5px #fff); }
+    .comparison-baseline { stroke:#d4e2ed; stroke-width:1.6; stroke-dasharray:7 5; opacity:.84; }
+    .comparison-note { position:relative; margin:12px 0 0; color:#b8d3e1; font-size:11px; line-height:1.6; }
+    .comparison-summary { position:relative; margin-top:16px; }
+    .comparison-summary h3 { margin:0 0 9px; font-size:16px; }
+    .comparison-summary table { min-width:690px; }
+    .comparison-summary td { white-space:normal; line-height:1.45; }
+    .comparison-summary td:first-child { min-width:130px; }
     .plot-foot { position:relative; display:flex; justify-content:space-between; gap:14px; color:#abc9d7; padding:8px 4px 0; font-size:11px; }
     .plot-foot b { color:#d5f5ff; font-weight:600; }
     .lower { display:grid; grid-template-columns:minmax(0,1.75fr) minmax(290px,.9fr); gap:15px; margin-top:17px; }
@@ -176,7 +194,7 @@
     .footer { display:flex; justify-content:space-between; gap:20px; color:#9fbbc9; font-size:11px; margin:17px 5px 0; }
     :focus-visible { outline:2px solid #9deaff; outline-offset:3px; }
     @media (max-width:1050px) { .section-head { flex-direction:column; } .lower,.conclusion-grid,.custom-grid { grid-template-columns:1fr; } }
-    @media (max-width:740px) { .shell { padding:16px 13px 30px; } .topline { padding-bottom:16px; } .top-right { gap:7px; } .top-right .meta { display:none; } .hero { margin:15px 0; padding:23px 18px 19px; } .hero h1 { font-size:30px; } .hero p { font-size:13px; } .dataset-stats { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:18px; padding-top:16px; } .dataset-stat { padding:12px 10px; } .dataset-stat strong { font-size:27px; } .dataset-stat span { font-size:10px; } .mode-switch { gap:5px; } .mode-switch button { flex:1; padding:10px 7px; font-size:12px; } .mode-switch small { width:100%; margin:0; padding:5px 7px 1px; } .controls { flex-wrap:wrap; } .control,.control.wide { width:calc(50% - 6px); } .method-note { width:100%; flex:auto; } .study { padding:18px 13px; } .charts { grid-template-columns:1fr; } .metric-ribbon { flex-wrap:wrap; } .metric { min-width:108px; } .conclusion { padding:19px 15px; } .conclusion-head,.custom-head { align-items:start; flex-wrap:wrap; } .conclusion-card { padding:16px; } .custom-workspace { padding:19px 14px; } .custom-card { padding:16px; } .custom-output-grid { grid-template-columns:repeat(2,1fr); } .footer { flex-direction:column; } }
+    @media (max-width:740px) { .shell { padding:16px 13px 30px; } .topline { padding-bottom:16px; } .top-right { gap:7px; } .top-right .meta { display:none; } .hero { margin:15px 0; padding:23px 18px 19px; } .hero h1 { font-size:30px; } .hero p { font-size:13px; } .dataset-stats { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:18px; padding-top:16px; } .dataset-stat { padding:12px 10px; } .dataset-stat strong { font-size:27px; } .dataset-stat span { font-size:10px; } .mode-switch { gap:5px; } .mode-switch button { flex:1; padding:10px 7px; font-size:12px; } .mode-switch small { width:100%; margin:0; padding:5px 7px 1px; } .controls { flex-wrap:wrap; } .control,.control.wide { width:calc(50% - 6px); } .method-note { width:100%; flex:auto; } .study,.comparison { padding:18px 13px; } .charts { grid-template-columns:1fr; } .metric-ribbon { flex-wrap:wrap; } .metric { min-width:108px; } .conclusion { padding:19px 15px; } .conclusion-head,.custom-head { align-items:start; flex-wrap:wrap; } .conclusion-card { padding:16px; } .custom-workspace { padding:19px 14px; } .custom-card { padding:16px; } .custom-output-grid { grid-template-columns:repeat(2,1fr); } .footer { flex-direction:column; } }
     @media (prefers-reduced-motion:reduce) { *,*::before,*::after { transition:none !important; animation:none !important; } }
   </style>
 </head>
@@ -212,7 +230,7 @@
     </nav>
     <section class="controls" id="officialControls" aria-label="分析選項">
       <div class="control glass bonus-one-control"><label for="problem">預測任務 <span class="bonus-flag">加分 1</span></label><select id="problem"><option value="current_hour">Problem 1 · 當小時需求</option><option value="next_hour">Problem 2 · 下一小時需求</option></select></div>
-      <div class="control wide glass"><label for="method">特徵選擇方法</label><select id="method"><option value="RFECV">RFECV + RFE 路徑</option><option value="SelectKBest">SelectKBest</option><option value="LassoCV">Lasso CV + 路徑</option><option value="All Features">全特徵基準</option></select></div>
+      <div class="control wide glass"><label for="method">特徵選擇方法或基準</label><select id="method"><optgroup label="特徵選擇演算法"><option value="RFECV">RFECV + RFE 路徑</option><option value="SelectKBest">SelectKBest</option><option value="LassoCV">Lasso CV + 路徑</option></optgroup><optgroup label="比較基準（非選擇演算法）"><option value="All Features">全特徵基準（僅 k=14）</option></optgroup></select></div>
       <div class="control glass"><label for="featureCount">特徵數量</label><select id="featureCount" aria-label="選擇特徵數量"></select></div>
       <div class="method-note glass"><span>判讀基準</span><strong id="methodText">逐步移除特徵，觀察時間驗證誤差如何變動。</strong></div>
     </section>
@@ -228,6 +246,13 @@
         <div class="table-scroll"><table><thead><tr><th style="width:45px">k</th><th>完整訓練區間選出的特徵</th><th style="width:80px">RMSE</th><th style="width:65px">R²</th><th style="width:102px">狀態</th></tr></thead><tbody id="rows"></tbody></table></div>
       </div>
       <aside class="insight glass"><span class="eyebrow">目前選取的組合</span><div class="big"><span id="insightK">—</span> <small>個模型欄位</small></div><div class="feature-list" id="features"></div><div class="note" id="caution"></div></aside>
+    </section>
+    <section class="comparison glass" id="officialComparison" aria-labelledby="comparisonTitle">
+      <div class="section-head"><div><h2 id="comparisonTitle">跨方法比較：哪個特徵數與組合較好？</h2><p>同一個 Problem、相同三折時間驗證；曲線僅連接各方法實際評估的 k。點選資料點可跳至上方該方法的組合表。</p></div></div>
+      <div class="comparison-legend" id="comparisonLegend" aria-label="比較圖方法圖例"></div>
+      <div class="charts"><div class="chart-box"><div class="chart-heading"><strong>各方法驗證 RMSE × 特徵數</strong><small>越低越好</small></div><svg class="chart comparison-chart" id="compareRmseChart" role="img" aria-label="多方法驗證 RMSE 與特徵數比較"></svg></div><div class="chart-box"><div class="chart-heading"><strong>各方法驗證 R² × 特徵數</strong><small>越高越好</small></div><svg class="chart comparison-chart" id="compareR2Chart" role="img" aria-label="多方法驗證 R 平方與特徵數比較"></svg></div></div>
+      <p class="comparison-note">虛線是<strong>全特徵 k=14 的單一驗證分數</strong>，只作水平參考，並非在 k=1～13 重訓的結果。Lasso／RFE 曲線為逐 k 探索；菱形標示 Lasso CV／RFECV 的正式選擇，分數可能與探索曲線不同。同座標資料點略向左右錯開以便點選，k 與分數不變。</p>
+      <div class="comparison-summary"><h3>正式候選與全特徵基準</h3><div class="table-scroll"><table><thead><tr><th>方案</th><th>正式選出 k</th><th>驗證 RMSE</th><th>驗證 R²</th><th>選定的編碼後特徵組合</th></tr></thead><tbody id="comparisonRows"></tbody></table></div></div>
     </section>
     <section class="conclusion glass" id="officialConclusion" aria-labelledby="conclusionTitle">
       <div class="conclusion-head"><div><span class="eyebrow">CRISP-DM / EVALUATION</span><h2 id="conclusionTitle">訓練結論</h2><p>依訓練區間驗證選方案；留出期曾在選題推演中看過，並非完全盲測。</p></div><span class="conclusion-tag">正式程式產出 · 學術分析</span></div>

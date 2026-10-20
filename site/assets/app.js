@@ -5,8 +5,14 @@ const explanations = {
   RFECV: '曲線是 RFE 各 k 的探索結果；紫色菱形是 RFECV 在內層交叉驗證選出的正式點，兩者分數不可混用。',
   LassoCV: '曲線是 Lasso 路徑實際出現的 k；紫色菱形是每個內層訓練折各自標準化的 Lasso CV 正式點。',
   SelectKBest: '依單一特徵與目標的統計關係選 k，再用相同時間折比較迴歸誤差。',
-  'All Features': '14 個編碼後候選欄位全部入模；只有 k=14 一個真實點。',
+  'All Features': '14 個編碼後候選欄位全部入模，只有 k=14 一個真實點；下方跨方法圖以虛線顯示其固定參考分數。',
 };
+const comparisonMethods = [
+  { key: 'SelectKBest', label: 'SelectKBest', color: '#66d5f2' },
+  { key: 'RFECV', label: 'RFE 路徑', color: '#7fe3b0' },
+  { key: 'LassoCV', label: 'Lasso 路徑', color: '#ffc78e' },
+  { key: 'All Features', label: '全特徵基準 · k=14', color: '#d4e2ed' },
+];
 const fmt = (value, digits = 2) => Number.isFinite(Number(value)) ? Number(value).toFixed(digits) : '—';
 const rowsFor = () => state.report.tasks[state.task].methods[state.method].rows;
 const exactFor = () => state.report.tasks[state.task].methods[state.method].exact;
@@ -70,6 +76,118 @@ function choose(k) {
   state.k = k;
   render();
   document.querySelector(`tr[data-k="${k}"]`)?.scrollIntoView({ block: 'nearest' });
+}
+
+function selectComparisonPoint(method, k) {
+  state.method = method;
+  state.k = k;
+  $('method').value = method;
+  render();
+  $('officialStudy').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function drawComparison(svgId, key) {
+  const svg = $(svgId);
+  svg.replaceChildren();
+  svg.setAttribute('viewBox', '0 0 560 232');
+  const task = state.report.tasks[state.task];
+  const series = comparisonMethods.slice(0, 3).map(item => ({ ...item, rows: task.methods[item.key].rows }));
+  const baseline = task.methods['All Features'].rows[0];
+  const values = series.flatMap(item => item.rows.map(row => row[key]));
+  values.push(baseline[key]);
+  for (const item of series.slice(1)) {
+    const exact = task.methods[item.key].exact;
+    if (exact?.available) values.push(exact[key]);
+  }
+  const left = 53, right = 530, top = 20, bottom = 179;
+  const min = Math.min(...values), max = Math.max(...values);
+  const pad = (max - min || 1) * .12;
+  const low = min - pad, high = max + pad;
+  const xp = k => left + (k - 1) / 13 * (right - left);
+  const yp = value => bottom - (value - low) / (high - low) * (bottom - top);
+  const markers = series.flatMap(item => item.rows.map(row => ({ method: item.key, k: row.k, value: row[key] })));
+  markers.push({ method: 'All Features', k: 14, value: baseline[key] });
+  const markerX = (method, k, value) => {
+    const nearby = markers.filter(point => point.k === k && Math.abs(yp(point.value) - yp(value)) < 8);
+    const index = nearby.findIndex(point => point.method === method && point.value === value);
+    return xp(k) + (index - (nearby.length - 1) / 2) * 10;
+  };
+  for (let i = 0; i < 4; i++) {
+    const y = top + (bottom - top) * i / 3;
+    svgElement('line', { x1: left, y1: y, x2: right, y2: y, class: 'grid' }, svg);
+    const tick = svgElement('text', { x: left - 8, y: y + 4, 'text-anchor': 'end', class: 'tick' }, svg);
+    tick.textContent = key === 'cv_rmse' ? Math.round(high - (high - low) * i / 3) : fmt(high - (high - low) * i / 3, 2);
+  }
+  svgElement('line', { x1: left, y1: bottom, x2: right, y2: bottom, class: 'axis' }, svg);
+  [1, 3, 5, 7, 9, 11, 13, 14].forEach(k => {
+    svgElement('text', { x: xp(k), y: bottom + 18, 'text-anchor': 'middle', class: 'tick' }, svg).textContent = k;
+  });
+  svgElement('text', { x: (left + right) / 2, y: 222, 'text-anchor': 'middle', class: 'tick' }, svg).textContent = '編碼後入模特徵數 k';
+  const baseLine = svgElement('line', { x1: left, y1: yp(baseline[key]), x2: right, y2: yp(baseline[key]), class: 'comparison-baseline' }, svg);
+  svgElement('title', {}, baseLine).textContent = `全特徵基準僅在 k=14 計算：${key === 'cv_rmse' ? 'RMSE' : 'R²'} ${fmt(baseline[key], key === 'cv_rmse' ? 2 : 3)}；虛線只作水平參考`;
+  for (const item of series) {
+    const path = svgElement('path', { d: item.rows.map((row, index) => `${index ? 'L' : 'M'}${xp(row.k)},${yp(row[key])}`).join(' '),
+      class: 'comparison-line', stroke: item.color, 'stroke-dasharray': item.key === 'LassoCV' ? '5 4' : 'none' }, svg);
+    svgElement('title', {}, path).textContent = `${item.label}：只連接已實際評估的特徵數`;
+    for (const row of item.rows) {
+      const point = svgElement('circle', { cx: markerX(item.key, row.k, row[key]), cy: yp(row[key]), r: item.key === state.method && row.k === state.k ? 6 : 4,
+        fill: item.color, class: 'comparison-point', tabindex: '0', role: 'button',
+        'aria-label': `${item.label}，k=${row.k}，${key === 'cv_rmse' ? 'RMSE' : 'R 平方'} ${fmt(row[key], key === 'cv_rmse' ? 2 : 3)}；點選查看特徵組合` }, svg);
+      svgElement('title', {}, point).textContent = `${item.label} · k=${row.k} · ${key === 'cv_rmse' ? 'RMSE' : 'R²'} ${fmt(row[key], key === 'cv_rmse' ? 2 : 3)}\n${row.features.join('、')}`;
+      point.addEventListener('click', () => selectComparisonPoint(item.key, row.k));
+      point.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectComparisonPoint(item.key, row.k); }
+      });
+    }
+    const exact = task.methods[item.key].exact;
+    if (exact?.available) {
+      const x = xp(exact.k), y = yp(exact[key]);
+      const diamond = svgElement('path', { d: `M${x},${y - 7} L${x + 7},${y} L${x},${y + 7} L${x - 7},${y} Z`,
+        fill: item.color, stroke: '#fff', 'stroke-width': 1.5 }, svg);
+      svgElement('title', {}, diamond).textContent = `${names[item.key]} 正式選擇 · k=${exact.k} · ${key === 'cv_rmse' ? 'RMSE' : 'R²'} ${fmt(exact[key], key === 'cv_rmse' ? 2 : 3)}`;
+    }
+  }
+  const basePoint = svgElement('circle', { cx: markerX('All Features', 14, baseline[key]), cy: yp(baseline[key]), r: state.method === 'All Features' ? 6 : 5,
+    fill: '#d4e2ed', class: 'comparison-point', tabindex: '0', role: 'button',
+    'aria-label': `全特徵基準，唯一真實點 k=14，${key === 'cv_rmse' ? 'RMSE' : 'R 平方'} ${fmt(baseline[key], key === 'cv_rmse' ? 2 : 3)}` }, svg);
+  svgElement('title', {}, basePoint).textContent = '全特徵基準只計算 k=14；虛線不是其他 k 的結果';
+  basePoint.addEventListener('click', () => selectComparisonPoint('All Features', 14));
+  basePoint.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectComparisonPoint('All Features', 14); }
+  });
+}
+
+function renderComparison() {
+  const legend = $('comparisonLegend');
+  legend.replaceChildren();
+  for (const item of comparisonMethods) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.setAttribute('aria-current', String(state.method === item.key));
+    const swatch = document.createElement('span');
+    swatch.className = `comparison-swatch${item.key === 'All Features' ? ' baseline' : ''}`;
+    swatch.style.setProperty('--swatch', item.color);
+    button.append(swatch, document.createTextNode(item.label));
+    button.addEventListener('click', () => selectComparisonPoint(item.key, item.key === 'All Features' ? 14 : state.report.tasks[state.task].methods[item.key].best_path_k));
+    legend.appendChild(button);
+  }
+  drawComparison('compareRmseChart', 'cv_rmse');
+  drawComparison('compareR2Chart', 'cv_r2');
+  const tbody = $('comparisonRows');
+  tbody.replaceChildren();
+  for (const item of comparisonMethods) {
+    const formal = candidateFor(item.key);
+    if (!formal) continue;
+    const row = document.createElement('tr');
+    if (state.method === item.key) row.className = 'active';
+    for (const value of [names[item.key], String(formal.k), fmt(formal.cv_rmse), fmt(formal.cv_r2, 3), formal.features.join('、')]) {
+      const cell = document.createElement('td');
+      cell.textContent = value;
+      row.appendChild(cell);
+    }
+    row.addEventListener('click', () => selectComparisonPoint(item.key, formal.k));
+    tbody.appendChild(row);
+  }
 }
 
 function render() {
@@ -154,11 +272,12 @@ function render() {
     });
     body.appendChild(tr);
   });
+  renderComparison();
 }
 
 function setMode(mode) {
   const official = mode === 'official';
-  for (const id of ['officialHero', 'officialControls', 'officialStudy', 'officialLower', 'officialConclusion']) $(id).hidden = !official;
+  for (const id of ['officialHero', 'officialControls', 'officialStudy', 'officialLower', 'officialComparison', 'officialConclusion']) $(id).hidden = !official;
   $('customHero').hidden = official;
   $('customView').hidden = official;
   $('officialMode').setAttribute('aria-pressed', String(official));

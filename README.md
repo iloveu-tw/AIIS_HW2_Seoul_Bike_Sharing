@@ -13,7 +13,7 @@ python3 -m http.server 8765
 # 開啟 http://127.0.0.1:8765/site/index.html
 ```
 
-網站現可切換兩個預測任務、四種方法及實際存在的特徵數，查看驗證 RMSE／R² 雙圖、逐列特徵組合與訓練結論。自訂 CSV 的介面已顯示，但瀏覽器計算引擎仍在開發，頁面會明確標示未啟用。
+網站現可切換兩個預測任務、三種特徵選擇方法、全特徵基準及實際存在的特徵數，查看個別方法與跨方法的驗證 RMSE／R² 雙圖、逐列特徵組合與訓練結論。自訂 CSV 的介面已顯示，但瀏覽器計算引擎仍在開發，頁面會明確標示未啟用。
 
 ## 預測問題與資料
 
@@ -34,7 +34,7 @@ python3 main.py
 
 `main.py` 是唯一正式分析程式，標示 CRISP-DM P1～P6，產生 `results/current_hour/`、`results/next_hour/` 的研究定義、資料檢查、切分、特徵選擇、圖表及訓練結論，並輸出 `site/data/results.json` 供互動頁使用。既有 `src/00_*.py` 是 P0 來源驗證紀錄，不是另一套正式模型。
 
-目前比較全特徵、SelectKBest、Lasso CV 與 RFECV。Lasso CV 用 `GridSearchCV(Pipeline(StandardScaler, Lasso))` 實作，讓尺度轉換只在各內層訓練折擬合；Lasso path／RFE path 圖是逐 `k` 探索，與正式交叉驗證選擇分開標示。
+目前比較 SelectKBest、Lasso CV、RFECV 三種特徵選擇方法，另以全部 14 個編碼後欄位的線性迴歸作**全特徵基準**；基準不是特徵選擇演算法。Lasso CV 用 `GridSearchCV(Pipeline(StandardScaler, Lasso))` 實作，讓尺度轉換只在各內層訓練折擬合；Lasso path／RFE path 圖是逐 `k` 探索，與正式交叉驗證選擇分開標示。跨方法圖中的全特徵虛線是 `k=14` 單一分數的水平參考，沒有替其他 `k` 產生假分數。
 
 ## 目前結果與限制
 
