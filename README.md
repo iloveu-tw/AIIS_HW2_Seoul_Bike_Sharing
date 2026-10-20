@@ -1,10 +1,12 @@
 # Seoul Bike Sharing：多元線性迴歸與特徵選擇
 
-AIIS HW2 專案。以 Kaggle Seoul Bike Sharing 的每小時資料，在 CRISP-DM P1～P6 流程中比較特徵選擇如何改變租借量預測。**目前為開發中的正式分析版本，尚未部署 GitHub Pages。**
+AIIS HW2 專案。以 Kaggle Seoul Bike Sharing 的每小時資料，在 CRISP-DM P1～P6 流程中比較特徵選擇如何改變租借量預測。**目前網站已部署；自訂 CSV 的瀏覽器計算功能仍在開發。**
 
 ## Live Demo
 
-GitHub Pages 尚未啟用。本機預覽：
+[開啟互動網站](https://iloveu-tw.github.io/AIIS_HW2_Seoul_Bike_Sharing/) · [部署紀錄](https://github.com/iloveu-tw/AIIS_HW2_Seoul_Bike_Sharing/actions/workflows/pages.yml)
+
+本機預覽：
 
 ```bash
 python3 -m http.server 8765
@@ -40,7 +42,23 @@ python3 main.py
 
 ## 完整網站截圖
 
-正式 GitHub Pages 部署後，桌面／手機完整截圖與功能標註版會保存在 `docs/screenshots/`，並在此區展示；目前尚無已部署網站截圖，不以試跑示意圖冒充。
+下列圖片直接擷取自 2026-10-20 已部署網站版本 `971401e`。原圖全部保留在 [`docs/screenshots/`](docs/screenshots/)，檔名、用途與雜湊見[截圖索引](docs/screenshots/INDEX.md)，可供繳交作業時下載與貼用。
+
+### 功能區塊標註版（桌面）
+
+![已部署網站完整桌面截圖，標出題目與資料摘要、資料模式、控制選項、雙圖、特徵組合及訓練結論六區](docs/screenshots/2026-10-20-971401e-desktop-annotated.png)
+
+### 桌面原圖與手機版
+
+![已部署網站完整桌面原圖](docs/screenshots/2026-10-20-971401e-desktop-official.png)
+
+![已部署網站完整手機截圖](docs/screenshots/2026-10-20-971401e-mobile-official.png)
+
+### 自訂資料入口現況
+
+![已部署網站自訂 CSV 介面預覽，畫面明示尚未啟用計算](docs/screenshots/2026-10-20-971401e-desktop-custom-preview.png)
+
+此截圖顯示加分 2 的入口與版位；計算功能尚未啟用，因此不將它列為已完成的加分結果。
 
 ## 規格與交接
 
