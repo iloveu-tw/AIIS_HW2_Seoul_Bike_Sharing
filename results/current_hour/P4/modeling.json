@@ -1,0 +1,1847 @@
+{
+  "methods": {
+    "All Features": {
+      "rows": [
+        {
+          "k": 14,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Wind speed (m/s)",
+            "Visibility (10m)",
+            "Dew point temperature(°C)",
+            "Solar Radiation (MJ/m2)",
+            "Rainfall(mm)",
+            "Snowfall (cm)",
+            "Seasons_Spring",
+            "Seasons_Summer",
+            "Seasons_Winter",
+            "Holiday_No Holiday",
+            "Functioning Day_Yes"
+          ],
+          "cv_rmse": 591.7594474388601,
+          "cv_r2": 0.07799503713721094,
+          "cv_rmse_sd": 155.3746324423109,
+          "folds": [
+            {
+              "mae": 278.53321760546504,
+              "rmse": 412.575706373042,
+              "r2": 0.16281733346789806
+            },
+            {
+              "mae": 509.1921617933939,
+              "rmse": 689.1722264756837,
+              "r2": 0.1921573850804621
+            },
+            {
+              "mae": 578.0097154421156,
+              "rmse": 673.5304094678546,
+              "r2": -0.12098960713672735
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Humidity(%)": 3,
+            "Wind speed (m/s)": 3,
+            "Visibility (10m)": 3,
+            "Dew point temperature(°C)": 3,
+            "Solar Radiation (MJ/m2)": 3,
+            "Rainfall(mm)": 3,
+            "Snowfall (cm)": 3,
+            "Seasons_Spring": 3,
+            "Seasons_Summer": 3,
+            "Seasons_Winter": 3,
+            "Holiday_No Holiday": 3,
+            "Functioning Day_Yes": 3
+          }
+        }
+      ],
+      "path_label": "All Features",
+      "best_path_k": 14,
+      "exact": null
+    },
+    "SelectKBest": {
+      "rows": [
+        {
+          "k": 1,
+          "features": [
+            "Temperature(°C)"
+          ],
+          "cv_rmse": 659.0080765341219,
+          "cv_r2": -0.1714962063012688,
+          "cv_rmse_sd": 125.40699835468837,
+          "folds": [
+            {
+              "mae": 349.72359294417663,
+              "rmse": 516.2799585570561,
+              "r2": -0.31094193816569016
+            },
+            {
+              "mae": 587.9427861889817,
+              "rmse": 751.5482657257021,
+              "r2": 0.03930622021690178
+            },
+            {
+              "mae": 618.7052214150106,
+              "rmse": 709.1960053196074,
+              "r2": -0.242852900955018
+            }
+          ],
+          "selection_frequency": {
+            "Temperature(°C)": 2
+          }
+        },
+        {
+          "k": 2,
+          "features": [
+            "Temperature(°C)",
+            "Seasons_Winter"
+          ],
+          "cv_rmse": 647.3760139279358,
+          "cv_r2": -0.09993287587028676,
+          "cv_rmse_sd": 170.5128247263653,
+          "folds": [
+            {
+              "mae": 307.94929551079156,
+              "rmse": 451.75433706548773,
+              "r2": -0.0037315732836815663
+            },
+            {
+              "mae": 596.591985092783,
+              "rmse": 764.5192875991174,
+              "r2": 0.005858696551537146
+            },
+            {
+              "mae": 634.271571756909,
+              "rmse": 725.854417119202,
+              "r2": -0.30192575087871587
+            }
+          ],
+          "selection_frequency": {
+            "Temperature(°C)": 3,
+            "Seasons_Winter": 1
+          }
+        },
+        {
+          "k": 3,
+          "features": [
+            "Temperature(°C)",
+            "Dew point temperature(°C)",
+            "Seasons_Winter"
+          ],
+          "cv_rmse": 633.08989927643,
+          "cv_r2": -0.05031094538738793,
+          "cv_rmse_sd": 163.38455860027906,
+          "folds": [
+            {
+              "mae": 306.5614151855049,
+              "rmse": 448.83090845304685,
+              "r2": 0.009217248237603726
+            },
+            {
+              "mae": 594.1149907108804,
+              "rmse": 760.3047508152772,
+              "r2": 0.016789216052085165
+            },
+            {
+              "mae": 596.5882364518233,
+              "rmse": 690.1340385609658,
+              "r2": -0.1769393004518527
+            }
+          ],
+          "selection_frequency": {
+            "Temperature(°C)": 3,
+            "Dew point temperature(°C)": 1,
+            "Seasons_Winter": 2
+          }
+        },
+        {
+          "k": 4,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Dew point temperature(°C)",
+            "Seasons_Winter"
+          ],
+          "cv_rmse": 634.2430163224627,
+          "cv_r2": -0.04784850946290076,
+          "cv_rmse_sd": 180.54052994003013,
+          "folds": [
+            {
+              "mae": 289.99672864665143,
+              "rmse": 427.7125120852991,
+              "r2": 0.10026040236335398
+            },
+            {
+              "mae": 574.4992993919027,
+              "rmse": 762.0795131324338,
+              "r2": 0.01219368494658235
+            },
+            {
+              "mae": 614.1504530357903,
+              "rmse": 712.9370237496553,
+              "r2": -0.2559996156986386
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 1,
+            "Temperature(°C)": 3,
+            "Dew point temperature(°C)": 1,
+            "Seasons_Winter": 2
+          }
+        },
+        {
+          "k": 5,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Dew point temperature(°C)",
+            "Seasons_Summer",
+            "Seasons_Winter"
+          ],
+          "cv_rmse": 609.8493392749484,
+          "cv_r2": 0.02988339938603679,
+          "cv_rmse_sd": 162.89537049792804,
+          "folds": [
+            {
+              "mae": 293.57346095446655,
+              "rmse": 430.086095572653,
+              "r2": 0.09024651336406675
+            },
+            {
+              "mae": 557.7417481453313,
+              "rmse": 747.6765958583542,
+              "r2": 0.04917892881923114
+            },
+            {
+              "mae": 548.3727851584072,
+              "rmse": 651.7853263938381,
+              "r2": -0.049775244025187515
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Dew point temperature(°C)": 1,
+            "Seasons_Summer": 1,
+            "Seasons_Winter": 2
+          }
+        },
+        {
+          "k": 6,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Dew point temperature(°C)",
+            "Solar Radiation (MJ/m2)",
+            "Seasons_Summer",
+            "Seasons_Winter"
+          ],
+          "cv_rmse": 606.1096013212202,
+          "cv_r2": 0.040075308052714566,
+          "cv_rmse_sd": 159.24789613050905,
+          "folds": [
+            {
+              "mae": 289.9947858815084,
+              "rmse": 429.54352400629256,
+              "r2": 0.09254044951684615
+            },
+            {
+              "mae": 556.1736708455412,
+              "rmse": 738.8696866230785,
+              "r2": 0.07144651698517746
+            },
+            {
+              "mae": 548.4881867724064,
+              "rmse": 649.9155933342897,
+              "r2": -0.0437610423438799
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Dew point temperature(°C)": 3,
+            "Solar Radiation (MJ/m2)": 3,
+            "Seasons_Summer": 1,
+            "Seasons_Winter": 2
+          }
+        },
+        {
+          "k": 7,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Visibility (10m)",
+            "Dew point temperature(°C)",
+            "Solar Radiation (MJ/m2)",
+            "Seasons_Summer",
+            "Seasons_Winter"
+          ],
+          "cv_rmse": 599.3368578335645,
+          "cv_r2": 0.057909417468958425,
+          "cv_rmse_sd": 152.5745987193868,
+          "folds": [
+            {
+              "mae": 287.39697683493534,
+              "rmse": 428.0549017456637,
+              "r2": 0.09881931831619795
+            },
+            {
+              "mae": 539.603356525156,
+              "rmse": 720.6972537536325,
+              "r2": 0.11656020335186568
+            },
+            {
+              "mae": 549.2545702288193,
+              "rmse": 649.2584180013977,
+              "r2": -0.04165126926118834
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Visibility (10m)": 0,
+            "Dew point temperature(°C)": 3,
+            "Solar Radiation (MJ/m2)": 3,
+            "Seasons_Summer": 1,
+            "Seasons_Winter": 2
+          }
+        },
+        {
+          "k": 8,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Visibility (10m)",
+            "Dew point temperature(°C)",
+            "Solar Radiation (MJ/m2)",
+            "Snowfall (cm)",
+            "Seasons_Summer",
+            "Seasons_Winter"
+          ],
+          "cv_rmse": 598.4803636789608,
+          "cv_r2": 0.062412837655943444,
+          "cv_rmse_sd": 156.84091401698075,
+          "folds": [
+            {
+              "mae": 282.32717980846076,
+              "rmse": 421.1323212351511,
+              "r2": 0.12773173474940058
+            },
+            {
+              "mae": 537.9112430135694,
+              "rmse": 718.9321474195428,
+              "r2": 0.12088228339753027
+            },
+            {
+              "mae": 557.1558708117991,
+              "rmse": 655.3766223821885,
+              "r2": -0.06137550517910051
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Visibility (10m)": 0,
+            "Dew point temperature(°C)": 3,
+            "Solar Radiation (MJ/m2)": 3,
+            "Snowfall (cm)": 2,
+            "Seasons_Summer": 1,
+            "Seasons_Winter": 2
+          }
+        },
+        {
+          "k": 9,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Visibility (10m)",
+            "Dew point temperature(°C)",
+            "Solar Radiation (MJ/m2)",
+            "Snowfall (cm)",
+            "Seasons_Summer",
+            "Seasons_Winter"
+          ],
+          "cv_rmse": 599.2709279863533,
+          "cv_r2": 0.05939878432416782,
+          "cv_rmse_sd": 156.1507683023176,
+          "folds": [
+            {
+              "mae": 282.7932692426905,
+              "rmse": 422.63710313136784,
+              "r2": 0.12148705364063728
+            },
+            {
+              "mae": 537.914546091416,
+              "rmse": 718.94754990274,
+              "r2": 0.12084461436032135
+            },
+            {
+              "mae": 557.5069212807755,
+              "rmse": 656.2281309249519,
+              "r2": -0.06413531502845515
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Humidity(%)": 3,
+            "Visibility (10m)": 0,
+            "Dew point temperature(°C)": 3,
+            "Solar Radiation (MJ/m2)": 3,
+            "Snowfall (cm)": 3,
+            "Seasons_Summer": 1,
+            "Seasons_Winter": 2
+          }
+        },
+        {
+          "k": 10,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Wind speed (m/s)",
+            "Visibility (10m)",
+            "Dew point temperature(°C)",
+            "Solar Radiation (MJ/m2)",
+            "Snowfall (cm)",
+            "Seasons_Summer",
+            "Seasons_Winter"
+          ],
+          "cv_rmse": 596.0811311440639,
+          "cv_r2": 0.0723660530461024,
+          "cv_rmse_sd": 161.7418454022649,
+          "folds": [
+            {
+              "mae": 278.53321760546504,
+              "rmse": 412.575706373042,
+              "r2": 0.16281733346789806
+            },
+            {
+              "mae": 538.1006070659204,
+              "rmse": 717.9128040141941,
+              "r2": 0.12337344355183955
+            },
+            {
+              "mae": 559.4547696851533,
+              "rmse": 657.7548830449554,
+              "r2": -0.0690926178814304
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Humidity(%)": 3,
+            "Wind speed (m/s)": 3,
+            "Visibility (10m)": 1,
+            "Dew point temperature(°C)": 3,
+            "Solar Radiation (MJ/m2)": 3,
+            "Snowfall (cm)": 3,
+            "Seasons_Summer": 1,
+            "Seasons_Winter": 2
+          }
+        },
+        {
+          "k": 11,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Wind speed (m/s)",
+            "Visibility (10m)",
+            "Dew point temperature(°C)",
+            "Solar Radiation (MJ/m2)",
+            "Rainfall(mm)",
+            "Snowfall (cm)",
+            "Seasons_Summer",
+            "Seasons_Winter"
+          ],
+          "cv_rmse": 601.3215441539277,
+          "cv_r2": 0.053630905605227576,
+          "cv_rmse_sd": 164.3683187836234,
+          "folds": [
+            {
+              "mae": 278.53321760546504,
+              "rmse": 412.57570637304195,
+              "r2": 0.16281733346789817
+            },
+            {
+              "mae": 530.3678312381744,
+              "rmse": 712.9629534256561,
+              "r2": 0.13542006436719312
+            },
+            {
+              "mae": 581.4213043817281,
+              "rmse": 678.4259726630847,
+              "r2": -0.13734468101940855
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Humidity(%)": 3,
+            "Wind speed (m/s)": 3,
+            "Visibility (10m)": 2,
+            "Dew point temperature(°C)": 3,
+            "Solar Radiation (MJ/m2)": 3,
+            "Rainfall(mm)": 2,
+            "Snowfall (cm)": 3,
+            "Seasons_Summer": 1,
+            "Seasons_Winter": 2
+          }
+        },
+        {
+          "k": 12,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Wind speed (m/s)",
+            "Visibility (10m)",
+            "Dew point temperature(°C)",
+            "Solar Radiation (MJ/m2)",
+            "Rainfall(mm)",
+            "Snowfall (cm)",
+            "Seasons_Summer",
+            "Seasons_Winter",
+            "Functioning Day_Yes"
+          ],
+          "cv_rmse": 598.4830259588407,
+          "cv_r2": 0.05930760012175784,
+          "cv_rmse_sd": 161.27515248593747,
+          "folds": [
+            {
+              "mae": 278.53321760546504,
+              "rmse": 412.57570637304195,
+              "r2": 0.16281733346789817
+            },
+            {
+              "mae": 517.1541559541789,
+              "rmse": 700.8455221665228,
+              "r2": 0.16455891185868077
+            },
+            {
+              "mae": 584.8478353824512,
+              "rmse": 682.0278493369575,
+              "r2": -0.14945344496130542
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Humidity(%)": 3,
+            "Wind speed (m/s)": 3,
+            "Visibility (10m)": 2,
+            "Dew point temperature(°C)": 3,
+            "Solar Radiation (MJ/m2)": 3,
+            "Rainfall(mm)": 3,
+            "Snowfall (cm)": 3,
+            "Seasons_Summer": 1,
+            "Seasons_Winter": 3,
+            "Functioning Day_Yes": 2
+          }
+        },
+        {
+          "k": 13,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Wind speed (m/s)",
+            "Visibility (10m)",
+            "Dew point temperature(°C)",
+            "Solar Radiation (MJ/m2)",
+            "Rainfall(mm)",
+            "Snowfall (cm)",
+            "Seasons_Summer",
+            "Seasons_Winter",
+            "Holiday_No Holiday",
+            "Functioning Day_Yes"
+          ],
+          "cv_rmse": 591.3385798476285,
+          "cv_r2": 0.07939466507119937,
+          "cv_rmse_sd": 155.04374721898895,
+          "folds": [
+            {
+              "mae": 278.53321760546504,
+              "rmse": 412.575706373042,
+              "r2": 0.16281733346789806
+            },
+            {
+              "mae": 509.1921617933934,
+              "rmse": 689.1722264756833,
+              "r2": 0.1921573850804632
+            },
+            {
+              "mae": 576.4514628900882,
+              "rmse": 672.2678066941602,
+              "r2": -0.11679072333476315
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Humidity(%)": 3,
+            "Wind speed (m/s)": 3,
+            "Visibility (10m)": 3,
+            "Dew point temperature(°C)": 3,
+            "Solar Radiation (MJ/m2)": 3,
+            "Rainfall(mm)": 3,
+            "Snowfall (cm)": 3,
+            "Seasons_Summer": 2,
+            "Seasons_Winter": 3,
+            "Holiday_No Holiday": 2,
+            "Functioning Day_Yes": 3
+          }
+        },
+        {
+          "k": 14,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Wind speed (m/s)",
+            "Visibility (10m)",
+            "Dew point temperature(°C)",
+            "Solar Radiation (MJ/m2)",
+            "Rainfall(mm)",
+            "Snowfall (cm)",
+            "Seasons_Spring",
+            "Seasons_Summer",
+            "Seasons_Winter",
+            "Holiday_No Holiday",
+            "Functioning Day_Yes"
+          ],
+          "cv_rmse": 591.7594474388601,
+          "cv_r2": 0.07799503713721094,
+          "cv_rmse_sd": 155.3746324423109,
+          "folds": [
+            {
+              "mae": 278.53321760546504,
+              "rmse": 412.575706373042,
+              "r2": 0.16281733346789806
+            },
+            {
+              "mae": 509.1921617933939,
+              "rmse": 689.1722264756837,
+              "r2": 0.1921573850804621
+            },
+            {
+              "mae": 578.0097154421156,
+              "rmse": 673.5304094678546,
+              "r2": -0.12098960713672735
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Humidity(%)": 3,
+            "Wind speed (m/s)": 3,
+            "Visibility (10m)": 3,
+            "Dew point temperature(°C)": 3,
+            "Solar Radiation (MJ/m2)": 3,
+            "Rainfall(mm)": 3,
+            "Snowfall (cm)": 3,
+            "Seasons_Spring": 3,
+            "Seasons_Summer": 3,
+            "Seasons_Winter": 3,
+            "Holiday_No Holiday": 3,
+            "Functioning Day_Yes": 3
+          }
+        }
+      ],
+      "path_label": "SelectKBest",
+      "best_path_k": 13,
+      "exact": null
+    },
+    "LassoCV": {
+      "rows": [
+        {
+          "k": 4,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Seasons_Winter"
+          ],
+          "cv_rmse": 611.976282534228,
+          "cv_r2": 0.022764807948380244,
+          "cv_rmse_sd": 164.40028997188224,
+          "folds": [
+            {
+              "mae": 289.99672864665143,
+              "rmse": 427.7125120852991,
+              "r2": 0.10026040236335398
+            },
+            {
+              "mae": 555.5943370346305,
+              "rmse": 743.637935248488,
+              "r2": 0.05942312373223435
+            },
+            {
+              "mae": 568.635253488688,
+              "rmse": 664.5784002688968,
+              "r2": -0.0913891022504476
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Humidity(%)": 3,
+            "Seasons_Winter": 0
+          }
+        },
+        {
+          "k": 7,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Visibility (10m)",
+            "Rainfall(mm)",
+            "Seasons_Winter",
+            "Functioning Day_Yes"
+          ],
+          "cv_rmse": 603.4423301916178,
+          "cv_r2": 0.049813966376656506,
+          "cv_rmse_sd": 169.89485398030502,
+          "folds": [
+            {
+              "mae": 277.29317840790924,
+              "rmse": 408.6249319127726,
+              "r2": 0.17877408343566625
+            },
+            {
+              "mae": 530.0874760422172,
+              "rmse": 720.8234454313902,
+              "r2": 0.11625080156162848
+            },
+            {
+              "mae": 582.5783906229143,
+              "rmse": 680.8786132306907,
+              "r2": -0.1455829858673252
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Humidity(%)": 3,
+            "Visibility (10m)": 2,
+            "Rainfall(mm)": 3,
+            "Seasons_Winter": 0,
+            "Functioning Day_Yes": 2
+          }
+        },
+        {
+          "k": 8,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Visibility (10m)",
+            "Rainfall(mm)",
+            "Seasons_Winter",
+            "Holiday_No Holiday",
+            "Functioning Day_Yes"
+          ],
+          "cv_rmse": 598.5049702272387,
+          "cv_r2": 0.06059738367532067,
+          "cv_rmse_sd": 162.4519436196608,
+          "folds": [
+            {
+              "mae": 279.20907389935013,
+              "rmse": 411.4528454685765,
+              "r2": 0.16736806426223483
+            },
+            {
+              "mae": 518.4567866929617,
+              "rmse": 704.2482726082172,
+              "r2": 0.1564267382840131
+            },
+            {
+              "mae": 581.8246199217336,
+              "rmse": 679.8137926049224,
+              "r2": -0.1420026515202859
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Humidity(%)": 3,
+            "Visibility (10m)": 3,
+            "Rainfall(mm)": 3,
+            "Seasons_Winter": 0,
+            "Holiday_No Holiday": 3,
+            "Functioning Day_Yes": 2
+          }
+        },
+        {
+          "k": 9,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Visibility (10m)",
+            "Solar Radiation (MJ/m2)",
+            "Rainfall(mm)",
+            "Seasons_Winter",
+            "Holiday_No Holiday",
+            "Functioning Day_Yes"
+          ],
+          "cv_rmse": 598.8257734848535,
+          "cv_r2": 0.05927127855455542,
+          "cv_rmse_sd": 162.0590126072979,
+          "folds": [
+            {
+              "mae": 280.2398349226633,
+              "rmse": 412.19894911781967,
+              "r2": 0.16434563783965783
+            },
+            {
+              "mae": 518.1311525331851,
+              "rmse": 704.0112068635831,
+              "r2": 0.15699457400886796
+            },
+            {
+              "mae": 582.1648517600556,
+              "rmse": 680.2671644731577,
+              "r2": -0.14352637618485953
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Humidity(%)": 3,
+            "Visibility (10m)": 3,
+            "Solar Radiation (MJ/m2)": 1,
+            "Rainfall(mm)": 3,
+            "Seasons_Winter": 0,
+            "Holiday_No Holiday": 3,
+            "Functioning Day_Yes": 2
+          }
+        },
+        {
+          "k": 10,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Wind speed (m/s)",
+            "Visibility (10m)",
+            "Solar Radiation (MJ/m2)",
+            "Rainfall(mm)",
+            "Seasons_Winter",
+            "Holiday_No Holiday",
+            "Functioning Day_Yes"
+          ],
+          "cv_rmse": 595.9945726480388,
+          "cv_r2": 0.06878527461669566,
+          "cv_rmse_sd": 159.730041557716,
+          "folds": [
+            {
+              "mae": 278.53321760546504,
+              "rmse": 412.575706373042,
+              "r2": 0.16281733346789806
+            },
+            {
+              "mae": 518.0233577422258,
+              "rmse": 704.4916737839756,
+              "r2": 0.15584352860050643
+            },
+            {
+              "mae": 573.4995313943359,
+              "rmse": 670.916337787099,
+              "r2": -0.1123050382183175
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Humidity(%)": 3,
+            "Wind speed (m/s)": 3,
+            "Visibility (10m)": 3,
+            "Solar Radiation (MJ/m2)": 1,
+            "Rainfall(mm)": 3,
+            "Seasons_Winter": 1,
+            "Holiday_No Holiday": 3,
+            "Functioning Day_Yes": 2
+          }
+        }
+      ],
+      "path_label": "Lasso path",
+      "best_path_k": 10,
+      "exact": {
+        "available": true,
+        "k": 14,
+        "features": [
+          "Hour",
+          "Temperature(°C)",
+          "Humidity(%)",
+          "Wind speed (m/s)",
+          "Visibility (10m)",
+          "Dew point temperature(°C)",
+          "Solar Radiation (MJ/m2)",
+          "Rainfall(mm)",
+          "Snowfall (cm)",
+          "Seasons_Spring",
+          "Seasons_Summer",
+          "Seasons_Winter",
+          "Holiday_No Holiday",
+          "Functioning Day_Yes"
+        ],
+        "cv_rmse": 599.117072900397,
+        "cv_r2": 0.05643879969781255,
+        "folds": [
+          {
+            "k": 5,
+            "features": [
+              "Hour",
+              "Temperature(°C)",
+              "Humidity(%)",
+              "Snowfall (cm)",
+              "Holiday_No Holiday"
+            ],
+            "metrics": {
+              "mae": 283.01194957005754,
+              "rmse": 419.90976051497256,
+              "r2": 0.13278882947577408
+            },
+            "selector": {
+              "alpha": 12.742749857031342,
+              "inner_cv_rmse": 118.55233819820256
+            }
+          },
+          {
+            "k": 11,
+            "features": [
+              "Hour",
+              "Temperature(°C)",
+              "Humidity(%)",
+              "Wind speed (m/s)",
+              "Visibility (10m)",
+              "Solar Radiation (MJ/m2)",
+              "Rainfall(mm)",
+              "Snowfall (cm)",
+              "Seasons_Spring",
+              "Holiday_No Holiday",
+              "Functioning Day_Yes"
+            ],
+            "metrics": {
+              "mae": 518.7698271424181,
+              "rmse": 704.2141375262025,
+              "r2": 0.156508512697194
+            },
+            "selector": {
+              "alpha": 0.1,
+              "inner_cv_rmse": 271.98724837181356
+            }
+          },
+          {
+            "k": 13,
+            "features": [
+              "Hour",
+              "Temperature(°C)",
+              "Humidity(%)",
+              "Wind speed (m/s)",
+              "Visibility (10m)",
+              "Dew point temperature(°C)",
+              "Solar Radiation (MJ/m2)",
+              "Rainfall(mm)",
+              "Snowfall (cm)",
+              "Seasons_Summer",
+              "Seasons_Winter",
+              "Holiday_No Holiday",
+              "Functioning Day_Yes"
+            ],
+            "metrics": {
+              "mae": 576.8351913176045,
+              "rmse": 673.227320660016,
+              "r2": -0.11998094307953044
+            },
+            "selector": {
+              "alpha": 0.1,
+              "inner_cv_rmse": 468.40655471975805
+            }
+          }
+        ],
+        "selector": {
+          "alpha": 0.1,
+          "inner_cv_rmse": 596.755482209872
+        }
+      }
+    },
+    "RFECV": {
+      "rows": [
+        {
+          "k": 1,
+          "features": [
+            "Dew point temperature(°C)"
+          ],
+          "cv_rmse": 662.4320347622669,
+          "cv_r2": -0.1890574651528276,
+          "cv_rmse_sd": 119.56588294480724,
+          "folds": [
+            {
+              "mae": 358.2623243967679,
+              "rmse": 526.5518332414914,
+              "r2": -0.36362571472036653
+            },
+            {
+              "mae": 587.9427861889817,
+              "rmse": 751.5482657257021,
+              "r2": 0.03930622021690178
+            },
+            {
+              "mae": 618.7052214150106,
+              "rmse": 709.1960053196074,
+              "r2": -0.242852900955018
+            }
+          ],
+          "selection_frequency": {
+            "Dew point temperature(°C)": 0
+          }
+        },
+        {
+          "k": 2,
+          "features": [
+            "Humidity(%)",
+            "Dew point temperature(°C)"
+          ],
+          "cv_rmse": 608.3425294030936,
+          "cv_r2": 0.02748070410417147,
+          "cv_rmse_sd": 162.8696463810227,
+          "folds": [
+            {
+              "mae": 287.40560033380365,
+              "rmse": 420.583359449536,
+              "r2": 0.13000432142145302
+            },
+            {
+              "mae": 537.949185586935,
+              "rmse": 711.5168594566712,
+              "r2": 0.13892374117751116
+            },
+            {
+              "mae": 599.2775060912813,
+              "rmse": 692.9273693030736,
+              "r2": -0.18648595028644976
+            }
+          ],
+          "selection_frequency": {
+            "Humidity(%)": 3,
+            "Dew point temperature(°C)": 1
+          }
+        },
+        {
+          "k": 3,
+          "features": [
+            "Hour",
+            "Humidity(%)",
+            "Dew point temperature(°C)"
+          ],
+          "cv_rmse": 605.6529420906013,
+          "cv_r2": 0.0304524992780492,
+          "cv_rmse_sd": 157.1077294001733,
+          "folds": [
+            {
+              "mae": 285.4656107459227,
+              "rmse": 424.24108090436346,
+              "r2": 0.11480619603682729
+            },
+            {
+              "mae": 522.7050709085335,
+              "rmse": 695.9832359083975,
+              "r2": 0.17611085163605023
+            },
+            {
+              "mae": 603.3427404352652,
+              "rmse": 696.7345094590427,
+              "r2": -0.19955954983872992
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 2,
+            "Humidity(%)": 3,
+            "Dew point temperature(°C)": 2
+          }
+        },
+        {
+          "k": 4,
+          "features": [
+            "Hour",
+            "Humidity(%)",
+            "Dew point temperature(°C)",
+            "Seasons_Winter"
+          ],
+          "cv_rmse": 588.4697430362588,
+          "cv_r2": 0.0929043411299515,
+          "cv_rmse_sd": 152.1515075111192,
+          "folds": [
+            {
+              "mae": 283.04732118619853,
+              "rmse": 417.3031098165887,
+              "r2": 0.14352208968057212
+            },
+            {
+              "mae": 530.8105130991228,
+              "rmse": 708.3542111149347,
+              "r2": 0.146561589690685
+            },
+            {
+              "mae": 542.5985746584286,
+              "rmse": 639.7519081772529,
+              "r2": -0.011370655981402633
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Humidity(%)": 3,
+            "Dew point temperature(°C)": 2,
+            "Seasons_Winter": 1
+          }
+        },
+        {
+          "k": 5,
+          "features": [
+            "Hour",
+            "Humidity(%)",
+            "Dew point temperature(°C)",
+            "Seasons_Winter",
+            "Functioning Day_Yes"
+          ],
+          "cv_rmse": 580.0696466110502,
+          "cv_r2": 0.11890458861351842,
+          "cv_rmse_sd": 151.36052263477882,
+          "folds": [
+            {
+              "mae": 276.5250719888904,
+              "rmse": 408.9816032813897,
+              "r2": 0.17733983122977515
+            },
+            {
+              "mae": 518.7801087587997,
+              "rmse": 696.5437326872999,
+              "r2": 0.1747833105812001
+            },
+            {
+              "mae": 539.5936833322007,
+              "rmse": 634.6836038644609,
+              "r2": 0.004590624029579993
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Humidity(%)": 3,
+            "Dew point temperature(°C)": 2,
+            "Seasons_Winter": 1,
+            "Functioning Day_Yes": 2
+          }
+        },
+        {
+          "k": 6,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Dew point temperature(°C)",
+            "Seasons_Winter",
+            "Functioning Day_Yes"
+          ],
+          "cv_rmse": 587.737874684813,
+          "cv_r2": 0.09112511108309258,
+          "cv_rmse_sd": 153.00445942817126,
+          "folds": [
+            {
+              "mae": 279.1469344378741,
+              "rmse": 411.6203029798403,
+              "r2": 0.1666901793150244
+            },
+            {
+              "mae": 508.176536050248,
+              "rmse": 687.9340122857134,
+              "r2": 0.1950576284820308
+            },
+            {
+              "mae": 570.1885879753265,
+              "rmse": 663.6593087888856,
+              "r2": -0.08837247454777741
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 2,
+            "Humidity(%)": 3,
+            "Dew point temperature(°C)": 2,
+            "Seasons_Winter": 1,
+            "Functioning Day_Yes": 2
+          }
+        },
+        {
+          "k": 7,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Dew point temperature(°C)",
+            "Rainfall(mm)",
+            "Seasons_Winter",
+            "Functioning Day_Yes"
+          ],
+          "cv_rmse": 589.3342904604251,
+          "cv_r2": 0.08506404681046342,
+          "cv_rmse_sd": 152.054653922254,
+          "folds": [
+            {
+              "mae": 280.86020708116627,
+              "rmse": 414.1787041744717,
+              "r2": 0.1562992131737333
+            },
+            {
+              "mae": 508.5828750879627,
+              "rmse": 687.4481276444254,
+              "r2": 0.196194281152679
+            },
+            {
+              "mae": 573.0355550932954,
+              "rmse": 666.3760395623781,
+              "r2": -0.09730135389502204
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 2,
+            "Humidity(%)": 3,
+            "Dew point temperature(°C)": 2,
+            "Rainfall(mm)": 2,
+            "Seasons_Winter": 1,
+            "Functioning Day_Yes": 2
+          }
+        },
+        {
+          "k": 8,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Dew point temperature(°C)",
+            "Solar Radiation (MJ/m2)",
+            "Rainfall(mm)",
+            "Seasons_Winter",
+            "Functioning Day_Yes"
+          ],
+          "cv_rmse": 599.7187163678126,
+          "cv_r2": 0.055611876151712,
+          "cv_rmse_sd": 161.35475639878976,
+          "folds": [
+            {
+              "mae": 280.736676916968,
+              "rmse": 413.79400613306353,
+              "r2": 0.15786577998732443
+            },
+            {
+              "mae": 517.8038865608951,
+              "rmse": 703.1385571106252,
+              "r2": 0.15908315594297706
+            },
+            {
+              "mae": 584.631454489263,
+              "rmse": 682.2235858597488,
+              "r2": -0.1501133074751655
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Humidity(%)": 3,
+            "Dew point temperature(°C)": 2,
+            "Solar Radiation (MJ/m2)": 0,
+            "Rainfall(mm)": 2,
+            "Seasons_Winter": 1,
+            "Functioning Day_Yes": 2
+          }
+        },
+        {
+          "k": 9,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Dew point temperature(°C)",
+            "Solar Radiation (MJ/m2)",
+            "Rainfall(mm)",
+            "Seasons_Spring",
+            "Seasons_Winter",
+            "Functioning Day_Yes"
+          ],
+          "cv_rmse": 591.251409225178,
+          "cv_r2": 0.07993571543261861,
+          "cv_rmse_sd": 154.96642080355073,
+          "folds": [
+            {
+              "mae": 278.64115219050325,
+              "rmse": 412.64423764736364,
+              "r2": 0.16253918834638315
+            },
+            {
+              "mae": 509.5525205073448,
+              "rmse": 689.9995845971769,
+              "r2": 0.19021657458880015
+            },
+            {
+              "mae": 574.2349381437587,
+              "rmse": 671.1104054309935,
+              "r2": -0.11294861663732747
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Humidity(%)": 3,
+            "Dew point temperature(°C)": 2,
+            "Solar Radiation (MJ/m2)": 0,
+            "Rainfall(mm)": 3,
+            "Seasons_Spring": 1,
+            "Seasons_Winter": 2,
+            "Functioning Day_Yes": 2
+          }
+        },
+        {
+          "k": 10,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Dew point temperature(°C)",
+            "Solar Radiation (MJ/m2)",
+            "Rainfall(mm)",
+            "Seasons_Spring",
+            "Seasons_Summer",
+            "Seasons_Winter",
+            "Functioning Day_Yes"
+          ],
+          "cv_rmse": 590.6809581228041,
+          "cv_r2": 0.08172570019681609,
+          "cv_rmse_sd": 154.56119755415213,
+          "folds": [
+            {
+              "mae": 278.53321760546504,
+              "rmse": 412.575706373042,
+              "r2": 0.16281733346789806
+            },
+            {
+              "mae": 508.8197389088777,
+              "rmse": 689.635768793933,
+              "r2": 0.19107029781984886
+            },
+            {
+              "mae": 573.4519158142474,
+              "rmse": 669.8313992014372,
+              "r2": -0.10871053069729864
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Humidity(%)": 3,
+            "Dew point temperature(°C)": 2,
+            "Solar Radiation (MJ/m2)": 2,
+            "Rainfall(mm)": 3,
+            "Seasons_Spring": 1,
+            "Seasons_Summer": 1,
+            "Seasons_Winter": 2,
+            "Functioning Day_Yes": 2
+          }
+        },
+        {
+          "k": 11,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Wind speed (m/s)",
+            "Dew point temperature(°C)",
+            "Solar Radiation (MJ/m2)",
+            "Rainfall(mm)",
+            "Seasons_Spring",
+            "Seasons_Summer",
+            "Seasons_Winter",
+            "Functioning Day_Yes"
+          ],
+          "cv_rmse": 590.9563597055522,
+          "cv_r2": 0.08079135717984205,
+          "cv_rmse_sd": 154.76915878480497,
+          "folds": [
+            {
+              "mae": 278.53321760546504,
+              "rmse": 412.57570637304195,
+              "r2": 0.16281733346789817
+            },
+            {
+              "mae": 508.6277644739126,
+              "rmse": 689.5673762858355,
+              "r2": 0.1912307360986616
+            },
+            {
+              "mae": 574.0837617838191,
+              "rmse": 670.7259964577792,
+              "r2": -0.1116739980270336
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Humidity(%)": 3,
+            "Wind speed (m/s)": 2,
+            "Dew point temperature(°C)": 2,
+            "Solar Radiation (MJ/m2)": 2,
+            "Rainfall(mm)": 3,
+            "Seasons_Spring": 1,
+            "Seasons_Summer": 1,
+            "Seasons_Winter": 2,
+            "Functioning Day_Yes": 3
+          }
+        },
+        {
+          "k": 12,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Wind speed (m/s)",
+            "Dew point temperature(°C)",
+            "Solar Radiation (MJ/m2)",
+            "Rainfall(mm)",
+            "Snowfall (cm)",
+            "Seasons_Spring",
+            "Seasons_Summer",
+            "Seasons_Winter",
+            "Functioning Day_Yes"
+          ],
+          "cv_rmse": 591.289030758763,
+          "cv_r2": 0.07957946194904712,
+          "cv_rmse_sd": 155.0083933306251,
+          "folds": [
+            {
+              "mae": 278.53321760546504,
+              "rmse": 412.57570637304195,
+              "r2": 0.16281733346789817
+            },
+            {
+              "mae": 509.24290232194033,
+              "rmse": 689.2342183311515,
+              "r2": 0.1920120457499922
+            },
+            {
+              "mae": 575.5031163661604,
+              "rmse": 672.0571675720958,
+              "r2": -0.11609099337074902
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Humidity(%)": 3,
+            "Wind speed (m/s)": 3,
+            "Dew point temperature(°C)": 2,
+            "Solar Radiation (MJ/m2)": 3,
+            "Rainfall(mm)": 3,
+            "Snowfall (cm)": 3,
+            "Seasons_Spring": 1,
+            "Seasons_Summer": 1,
+            "Seasons_Winter": 3,
+            "Functioning Day_Yes": 3
+          }
+        },
+        {
+          "k": 13,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Wind speed (m/s)",
+            "Dew point temperature(°C)",
+            "Solar Radiation (MJ/m2)",
+            "Rainfall(mm)",
+            "Snowfall (cm)",
+            "Seasons_Spring",
+            "Seasons_Summer",
+            "Seasons_Winter",
+            "Holiday_No Holiday",
+            "Functioning Day_Yes"
+          ],
+          "cv_rmse": 591.658417836247,
+          "cv_r2": 0.07833125848961027,
+          "cv_rmse_sd": 155.29495537243892,
+          "folds": [
+            {
+              "mae": 278.53321760546504,
+              "rmse": 412.575706373042,
+              "r2": 0.16281733346789806
+            },
+            {
+              "mae": 509.1921617933934,
+              "rmse": 689.1722264756833,
+              "r2": 0.1921573850804632
+            },
+            {
+              "mae": 576.8351913176045,
+              "rmse": 673.227320660016,
+              "r2": -0.11998094307953044
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Humidity(%)": 3,
+            "Wind speed (m/s)": 3,
+            "Dew point temperature(°C)": 3,
+            "Solar Radiation (MJ/m2)": 3,
+            "Rainfall(mm)": 3,
+            "Snowfall (cm)": 3,
+            "Seasons_Spring": 1,
+            "Seasons_Summer": 2,
+            "Seasons_Winter": 3,
+            "Holiday_No Holiday": 3,
+            "Functioning Day_Yes": 3
+          }
+        },
+        {
+          "k": 14,
+          "features": [
+            "Hour",
+            "Temperature(°C)",
+            "Humidity(%)",
+            "Wind speed (m/s)",
+            "Visibility (10m)",
+            "Dew point temperature(°C)",
+            "Solar Radiation (MJ/m2)",
+            "Rainfall(mm)",
+            "Snowfall (cm)",
+            "Seasons_Spring",
+            "Seasons_Summer",
+            "Seasons_Winter",
+            "Holiday_No Holiday",
+            "Functioning Day_Yes"
+          ],
+          "cv_rmse": 591.7594474388601,
+          "cv_r2": 0.07799503713721094,
+          "cv_rmse_sd": 155.3746324423109,
+          "folds": [
+            {
+              "mae": 278.53321760546504,
+              "rmse": 412.575706373042,
+              "r2": 0.16281733346789806
+            },
+            {
+              "mae": 509.1921617933939,
+              "rmse": 689.1722264756837,
+              "r2": 0.1921573850804621
+            },
+            {
+              "mae": 578.0097154421156,
+              "rmse": 673.5304094678546,
+              "r2": -0.12098960713672735
+            }
+          ],
+          "selection_frequency": {
+            "Hour": 3,
+            "Temperature(°C)": 3,
+            "Humidity(%)": 3,
+            "Wind speed (m/s)": 3,
+            "Visibility (10m)": 3,
+            "Dew point temperature(°C)": 3,
+            "Solar Radiation (MJ/m2)": 3,
+            "Rainfall(mm)": 3,
+            "Snowfall (cm)": 3,
+            "Seasons_Spring": 3,
+            "Seasons_Summer": 3,
+            "Seasons_Winter": 3,
+            "Holiday_No Holiday": 3,
+            "Functioning Day_Yes": 3
+          }
+        }
+      ],
+      "path_label": "RFE path",
+      "best_path_k": 5,
+      "exact": {
+        "available": true,
+        "k": 5,
+        "features": [
+          "Hour",
+          "Humidity(%)",
+          "Dew point temperature(°C)",
+          "Seasons_Winter",
+          "Functioning Day_Yes"
+        ],
+        "cv_rmse": 593.4714477493834,
+        "cv_r2": 0.07050345510431817,
+        "folds": [
+          {
+            "k": 2,
+            "features": [
+              "Humidity(%)",
+              "Dew point temperature(°C)"
+            ],
+            "metrics": {
+              "mae": 287.40560033380365,
+              "rmse": 420.583359449536,
+              "r2": 0.13000432142145302
+            },
+            "selector": {
+              "inner_selected_k": 2
+            }
+          },
+          {
+            "k": 9,
+            "features": [
+              "Hour",
+              "Temperature(°C)",
+              "Humidity(%)",
+              "Visibility (10m)",
+              "Rainfall(mm)",
+              "Seasons_Spring",
+              "Seasons_Winter",
+              "Holiday_No Holiday",
+              "Functioning Day_Yes"
+            ],
+            "metrics": {
+              "mae": 509.5525205073448,
+              "rmse": 689.9995845971769,
+              "r2": 0.19021657458880015
+            },
+            "selector": {
+              "inner_selected_k": 9
+            }
+          },
+          {
+            "k": 10,
+            "features": [
+              "Hour",
+              "Temperature(°C)",
+              "Humidity(%)",
+              "Visibility (10m)",
+              "Dew point temperature(°C)",
+              "Solar Radiation (MJ/m2)",
+              "Rainfall(mm)",
+              "Seasons_Summer",
+              "Seasons_Winter",
+              "Functioning Day_Yes"
+            ],
+            "metrics": {
+              "mae": 573.4519158142474,
+              "rmse": 669.8313992014372,
+              "r2": -0.10871053069729864
+            },
+            "selector": {
+              "inner_selected_k": 10
+            }
+          }
+        ],
+        "selector": {
+          "inner_selected_k": 5
+        }
+      }
+    }
+  },
+  "candidates": [
+    {
+      "method": "SelectKBest",
+      "k": 13,
+      "features": [
+        "Hour",
+        "Temperature(°C)",
+        "Humidity(%)",
+        "Wind speed (m/s)",
+        "Visibility (10m)",
+        "Dew point temperature(°C)",
+        "Solar Radiation (MJ/m2)",
+        "Rainfall(mm)",
+        "Snowfall (cm)",
+        "Seasons_Summer",
+        "Seasons_Winter",
+        "Holiday_No Holiday",
+        "Functioning Day_Yes"
+      ],
+      "cv_rmse": 591.3385798476285,
+      "cv_r2": 0.07939466507119937,
+      "source": "validated k path",
+      "test": {
+        "mae": 304.35655174365854,
+        "rmse": 424.13953598607975,
+        "r2": 0.5217821463544721
+      },
+      "equation": {
+        "intercept": -238.516354965941,
+        "coefficients": {
+          "Hour": 27.58440024177114,
+          "Temperature(°C)": 18.566395186324936,
+          "Humidity(%)": -9.977354048692535,
+          "Wind speed (m/s)": 23.495712874265788,
+          "Visibility (10m)": 0.024851826741547612,
+          "Dew point temperature(°C)": 9.716762539111857,
+          "Solar Radiation (MJ/m2)": -82.4757561513741,
+          "Rainfall(mm)": -59.064392753516294,
+          "Snowfall (cm)": 59.89513181687907,
+          "Seasons_Summer": -54.251389427973834,
+          "Seasons_Winter": -235.32084222863804,
+          "Holiday_No Holiday": 118.43839496077022,
+          "Functioning Day_Yes": 868.9839319576212
+        }
+      },
+      "negative_prediction_count": 112,
+      "functioning_test": {
+        "mae": 305.05618776691585,
+        "rmse": 432.9585220603602,
+        "r2": 0.44089671807823894
+      },
+      "nonfunctioning_test_count": 223
+    },
+    {
+      "method": "All Features",
+      "k": 14,
+      "features": [
+        "Hour",
+        "Temperature(°C)",
+        "Humidity(%)",
+        "Wind speed (m/s)",
+        "Visibility (10m)",
+        "Dew point temperature(°C)",
+        "Solar Radiation (MJ/m2)",
+        "Rainfall(mm)",
+        "Snowfall (cm)",
+        "Seasons_Spring",
+        "Seasons_Summer",
+        "Seasons_Winter",
+        "Holiday_No Holiday",
+        "Functioning Day_Yes"
+      ],
+      "cv_rmse": 591.7594474388601,
+      "cv_r2": 0.07799503713721094,
+      "source": "validated k path",
+      "test": {
+        "mae": 306.97031581298256,
+        "rmse": 409.9061149448539,
+        "r2": 0.553339995125729
+      },
+      "equation": {
+        "intercept": -93.02271617350664,
+        "coefficients": {
+          "Hour": 27.884557122160526,
+          "Temperature(°C)": 17.995802243417756,
+          "Humidity(%)": -9.929408821872372,
+          "Wind speed (m/s)": 24.497859354528305,
+          "Visibility (10m)": 0.0043223723294273314,
+          "Dew point temperature(°C)": 7.675599170096529,
+          "Solar Radiation (MJ/m2)": -81.36377300362356,
+          "Rainfall(mm)": -59.26650624929861,
+          "Snowfall (cm)": 59.24052430771364,
+          "Seasons_Spring": -140.1727229342085,
+          "Seasons_Summer": -135.4489483125942,
+          "Seasons_Winter": -397.2991853998604,
+          "Holiday_No Holiday": 111.72260121660292,
+          "Functioning Day_Yes": 886.5522108002128
+        }
+      },
+      "negative_prediction_count": 96,
+      "functioning_test": {
+        "mae": 307.0144439840409,
+        "rmse": 417.0396341856888,
+        "r2": 0.48125476716110027
+      },
+      "nonfunctioning_test_count": 223
+    },
+    {
+      "method": "RFECV",
+      "k": 5,
+      "features": [
+        "Hour",
+        "Humidity(%)",
+        "Dew point temperature(°C)",
+        "Seasons_Winter",
+        "Functioning Day_Yes"
+      ],
+      "cv_rmse": 593.4714477493834,
+      "cv_r2": 0.07050345510431817,
+      "source": "nested selector",
+      "test": {
+        "mae": 304.5086310903865,
+        "rmse": 428.69692003021646,
+        "r2": 0.5114500212446886
+      },
+      "equation": {
+        "intercept": 275.3474660521101,
+        "coefficients": {
+          "Hour": 28.467266178398244,
+          "Humidity(%)": -13.394263927537757,
+          "Dew point temperature(°C)": 24.612914132706162,
+          "Seasons_Winter": -254.62241926903064,
+          "Functioning Day_Yes": 849.349365215889
+        }
+      },
+      "negative_prediction_count": 103,
+      "functioning_test": {
+        "mae": 305.8053763884412,
+        "rmse": 440.81551106079417,
+        "r2": 0.42042026474016314
+      },
+      "nonfunctioning_test_count": 223
+    },
+    {
+      "method": "LassoCV",
+      "k": 14,
+      "features": [
+        "Hour",
+        "Temperature(°C)",
+        "Humidity(%)",
+        "Wind speed (m/s)",
+        "Visibility (10m)",
+        "Dew point temperature(°C)",
+        "Solar Radiation (MJ/m2)",
+        "Rainfall(mm)",
+        "Snowfall (cm)",
+        "Seasons_Spring",
+        "Seasons_Summer",
+        "Seasons_Winter",
+        "Holiday_No Holiday",
+        "Functioning Day_Yes"
+      ],
+      "cv_rmse": 599.117072900397,
+      "cv_r2": 0.05643879969781255,
+      "source": "nested selector",
+      "test": {
+        "mae": 306.97031581298256,
+        "rmse": 409.9061149448539,
+        "r2": 0.553339995125729
+      },
+      "equation": {
+        "intercept": -93.02271617350664,
+        "coefficients": {
+          "Hour": 27.884557122160526,
+          "Temperature(°C)": 17.995802243417756,
+          "Humidity(%)": -9.929408821872372,
+          "Wind speed (m/s)": 24.497859354528305,
+          "Visibility (10m)": 0.0043223723294273314,
+          "Dew point temperature(°C)": 7.675599170096529,
+          "Solar Radiation (MJ/m2)": -81.36377300362356,
+          "Rainfall(mm)": -59.26650624929861,
+          "Snowfall (cm)": 59.24052430771364,
+          "Seasons_Spring": -140.1727229342085,
+          "Seasons_Summer": -135.4489483125942,
+          "Seasons_Winter": -397.2991853998604,
+          "Holiday_No Holiday": 111.72260121660292,
+          "Functioning Day_Yes": 886.5522108002128
+        }
+      },
+      "negative_prediction_count": 96,
+      "functioning_test": {
+        "mae": 307.0144439840409,
+        "rmse": 417.0396341856888,
+        "r2": 0.48125476716110027
+      },
+      "nonfunctioning_test_count": 223
+    }
+  ]
+}

@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seoul Bike · 特徵選擇實驗室（試跑示意）</title>
+  <style>
+    :root { color-scheme: dark; --night:#071825; --deep:#102b3b; --line:rgba(190,236,255,.19); --ink:#effaff; --muted:#a9c2d2; --ice:#96eaff; --blue:#54b8f2; --amber:#ffc394; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-width:320px; font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif; color:var(--ink); background:radial-gradient(circle at 80% 5%,#17617a 0,#0b3348 27%,transparent 49%),radial-gradient(circle at 7% 59%,#11405d 0,transparent 32%),var(--night); }
+    body::before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.25; background:linear-gradient(110deg,transparent 47%,rgba(130,220,255,.12) 50%,transparent 53%); background-size:280px 280px; }
+    .shell { max-width:1510px; margin:auto; padding:28px 38px 50px; position:relative; }
+    .topline { display:flex; justify-content:space-between; align-items:center; padding:0 4px 24px; border-bottom:1px solid var(--line); }
+    .brand { display:flex; align-items:center; gap:11px; font-size:17px; font-weight:700; letter-spacing:.01em; }
+    .brand-mark { width:30px; height:30px; border-radius:10px; display:grid; place-items:center; color:#003b55; background:linear-gradient(145deg,#ddffff,#57c8ed); box-shadow:0 0 25px rgba(102,223,255,.45); font-size:20px; }
+    .top-right { display:flex; align-items:center; gap:13px; font-size:12px; color:#cce2ee; }
+    .live-dot { width:6px; height:6px; border-radius:50%; background:#79e9d4; box-shadow:0 0 12px #79e9d4; }
+    .trial-tag { border:1px solid rgba(255,205,162,.46); background:rgba(255,172,111,.12); color:#ffdabd; border-radius:100px; padding:7px 12px; font-weight:650; }
+    .hero { position:relative; isolation:isolate; margin:20px 0 18px; padding:30px 34px 27px; border-radius:27px; overflow:hidden; background:radial-gradient(circle at 70% -20%,rgba(70,205,255,.34),transparent 39%),linear-gradient(120deg,#0a314b 5%,#07577a 53%,#0b233e 100%); border:1px solid rgba(176,236,255,.3); box-shadow:inset 0 1px rgba(255,255,255,.22),0 22px 44px rgba(0,14,27,.24); }
+    .hero::before { content:""; position:absolute; z-index:-1; inset:0; pointer-events:none; background:radial-gradient(500px circle at var(--x,68%) var(--y,0%),rgba(224,250,255,.18),transparent 65%); }
+    .hero-labels { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+    .hero-labels span { display:inline-flex; padding:6px 11px; border-radius:100px; border:1px solid rgba(208,242,255,.27); background:rgba(213,246,255,.11); color:#d8f4ff; font-size:10px; font-weight:700; letter-spacing:.08em; }
+    .hero h1 { margin:0; max-width:1050px; font-size:clamp(31px,3vw,45px); line-height:1.18; letter-spacing:-.045em; font-weight:760; }
+    .hero h1 em { color:#8bddff; font-style:normal; }
+    .hero p { max-width:940px; margin:12px 0 0; color:#d1eaf5; font-size:15px; line-height:1.6; }
+    .dataset-stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:11px; margin-top:24px; padding-top:21px; border-top:1px solid rgba(216,245,255,.23); }
+    .dataset-stat { min-width:0; padding:14px 17px 13px; border-radius:16px; background:linear-gradient(130deg,rgba(214,248,255,.15),rgba(139,211,240,.07)); border:1px solid rgba(211,245,255,.2); box-shadow:inset 0 1px rgba(255,255,255,.13); transition:transform .2s,background .2s,box-shadow .2s; }
+    .dataset-stat:hover { transform:translateY(-3px); background:rgba(194,240,255,.2); box-shadow:0 10px 27px rgba(0,22,42,.2),inset 0 1px rgba(255,255,255,.25); }
+    .dataset-stat strong { display:block; color:#fff; font-size:31px; line-height:1.05; letter-spacing:-.035em; font-variant-numeric:tabular-nums; }
+    .dataset-stat span { display:block; margin-top:6px; color:#c6e1ed; font-size:12px; }
+    .hero-meta { display:flex; gap:8px 19px; flex-wrap:wrap; margin-top:15px; color:#c3e0ed; font-size:11px; }
+    .hero-meta b { color:#f2fbff; font-weight:630; }
+    [hidden] { display:none !important; }
+    .mode-switch { display:flex; align-items:center; gap:8px; flex-wrap:wrap; padding:8px; margin:0 0 16px; border-radius:19px; }
+    .mode-switch button,.source-tabs button { position:relative; border:1px solid transparent; border-radius:12px; background:transparent; color:#c3dfeb; cursor:pointer; font:650 14px -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif; padding:11px 17px; transition:background .2s,box-shadow .2s,transform .2s; }
+    .mode-switch button:hover,.source-tabs button:hover { background:rgba(177,232,251,.1); }
+    .mode-switch button[aria-pressed="true"],.source-tabs button[aria-pressed="true"] { color:#f8fdff; background:linear-gradient(135deg,rgba(118,217,250,.3),rgba(92,154,203,.13)); border-color:rgba(188,238,255,.4); box-shadow:inset 0 1px rgba(255,255,255,.18),0 5px 17px rgba(0,18,32,.16); }
+    #officialMode { color:#baf7d5; border-color:rgba(123,232,177,.49); background:rgba(48,148,107,.19); }
+    #officialMode:hover { background:rgba(80,197,139,.31); }
+    #officialMode[aria-pressed="true"] { color:#fff; border-color:rgba(169,255,205,.77); background:linear-gradient(135deg,rgba(90,218,150,.48),rgba(42,140,101,.22)); box-shadow:inset 0 1px rgba(255,255,255,.23),0 6px 20px rgba(30,128,86,.24); }
+    #customMode { color:#e2d4ff; border-color:rgba(185,158,251,.36); background:rgba(132,103,205,.13); }
+    #customMode:hover { background:rgba(158,127,232,.25); }
+    #customMode[aria-pressed="true"],#customView .source-tabs button[aria-pressed="true"] { background:linear-gradient(135deg,rgba(171,144,250,.33),rgba(109,119,215,.16)); border-color:rgba(205,187,255,.52); box-shadow:inset 0 1px rgba(255,255,255,.19),0 6px 20px rgba(62,39,119,.21); }
+    .mode-badge { display:inline-block; min-width:26px; margin-right:8px; padding:2px 5px; border-radius:7px; border:1px solid currentColor; font-size:11px; line-height:1.15; text-align:center; vertical-align:1px; }
+    .mode-switch small { position:relative; margin-left:auto; padding:0 10px; color:#a9ccd9; font-size:11px; }
+    .control.bonus-one-control { border-color:rgba(133,241,182,.64); background:linear-gradient(145deg,rgba(159,246,194,.27),rgba(35,118,88,.21)); box-shadow:inset 0 1px rgba(230,255,239,.28),0 10px 27px rgba(14,69,50,.2); }
+    .control.bonus-one-control:hover { border-color:rgba(184,255,214,.82); background:linear-gradient(145deg,rgba(179,255,211,.35),rgba(41,139,99,.26)); }
+    .control.bonus-one-control::after { color:#a8f8cc; }
+    .bonus-flag { float:right; padding:2px 7px; border-radius:100px; border:1px solid rgba(166,247,201,.63); color:#b9ffdb; background:rgba(53,172,113,.22); font-size:9px; font-weight:700; }
+    #customHero { background:radial-gradient(circle at 70% -20%,rgba(165,126,246,.35),transparent 40%),linear-gradient(120deg,#182344 5%,#3a3172 53%,#14203b 100%); border-color:rgba(205,184,255,.42); }
+    #customHero h1 em { color:#d2bfff; }
+    #customHero .hero-labels span { border-color:rgba(211,190,255,.36); background:rgba(197,172,255,.12); color:#e5dbff; }
+    #customHero .dataset-stat { border-color:rgba(210,190,255,.28); background:linear-gradient(130deg,rgba(216,197,255,.16),rgba(130,117,223,.08)); }
+    .custom-workspace { border-radius:26px; padding:26px 28px; }
+    #customView { border-color:rgba(204,185,255,.37); background:linear-gradient(145deg,rgba(191,170,255,.16),rgba(79,81,158,.1) 44%,rgba(12,22,47,.66)); }
+    #customView .custom-card,#customView .custom-output { border-color:rgba(205,187,255,.23); background:rgba(17,24,56,.55); }
+    #customView .custom-step,#customView .custom-head .eyebrow { color:#d3bdff; }
+    #customView .conclusion-tag { border-color:rgba(205,183,255,.47); color:#eadbff; background:rgba(165,126,246,.13); }
+    #customView .source-tabs button { color:#d7c5ff; background:rgba(117,87,192,.1); }
+    #customView .source-tabs button:hover { background:rgba(164,132,235,.25); }
+    #customView .custom-field input,#customView .custom-field select { border-color:rgba(203,183,255,.29); background:#202946; }
+    #customView input[type="file"]::file-selector-button { margin-right:9px; padding:5px 10px; border:1px solid rgba(208,185,255,.55); border-radius:8px; color:#eee5ff; background:rgba(136,101,214,.38); cursor:pointer; }
+    #customView input[type="file"]::file-selector-button:hover { background:rgba(166,131,235,.56); }
+    #customView .custom-field input:focus-visible { outline-color:#c8adff; }
+    #customView .feature-placeholder { border-color:rgba(205,185,255,.36); }
+    #customView .custom-output-grid div { border-color:rgba(203,183,255,.18); }
+    #customView .run-preview { border-color:rgba(188,168,229,.28); color:#c8b9e1; background:rgba(117,91,166,.12); }
+    .custom-head { position:relative; display:flex; justify-content:space-between; align-items:start; gap:15px; margin-bottom:19px; }
+    .custom-head .eyebrow { color:#9bddeb; font-size:11px; font-weight:700; letter-spacing:.08em; }
+    .custom-head h2 { margin:7px 0 6px; font-size:27px; }
+    .custom-head p { max-width:770px; margin:0; color:#bed9e5; font-size:13px; line-height:1.65; }
+    .custom-grid { position:relative; display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+    .custom-card { min-width:0; padding:20px; border-radius:20px; border:1px solid rgba(190,235,250,.18); background:rgba(4,29,45,.5); }
+    .custom-step { display:block; color:#9bddeb; font-size:11px; font-weight:700; letter-spacing:.04em; }
+    .custom-card h3 { margin:6px 0 12px; font-size:19px; }
+    .source-tabs { display:flex; gap:6px; margin-bottom:14px; padding:4px; border-radius:14px; background:rgba(147,207,231,.07); }
+    .source-tabs button { flex:1; font-size:12px; padding:9px 10px; }
+    .custom-field { display:block; margin:0 0 12px; color:#c7e0eb; font-size:12px; }
+    .custom-field input,.custom-field select { display:block; width:100%; margin-top:7px; padding:11px 12px; border-radius:11px; border:1px solid rgba(190,235,250,.27); color:#effaff; background:#102f43; font:inherit; }
+    .custom-field input[type="file"] { padding:9px; cursor:pointer; }
+    .custom-field input::placeholder { color:#89aebf; }
+    .custom-field select:disabled { color:#95adba; cursor:not-allowed; }
+    .custom-help { margin:7px 0 0; color:#a8c7d5; font-size:11px; line-height:1.6; }
+    .custom-status { min-height:38px; margin-top:14px; padding:10px 12px; border-left:2px solid #f6c391; border-radius:7px; background:rgba(255,196,128,.08); color:#f0d6bb; font-size:11px; line-height:1.5; }
+    .feature-placeholder { padding:12px; border:1px dashed rgba(170,219,239,.3); border-radius:11px; color:#a8c5d3; font-size:11px; line-height:1.6; }
+    .run-preview { width:100%; margin-top:14px; padding:12px; border:1px solid rgba(255,207,160,.31); border-radius:12px; background:rgba(255,187,126,.12); color:#f9d8b7; font:700 13px -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif; cursor:not-allowed; }
+    .custom-output { position:relative; margin-top:15px; padding:18px 20px; border:1px solid rgba(190,235,250,.18); border-radius:19px; background:rgba(4,29,45,.46); }
+    .custom-output h3 { margin:0 0 12px; font-size:17px; }
+    .custom-output-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+    .custom-output-grid div { padding:12px; border:1px solid rgba(182,225,243,.12); border-radius:12px; color:#9fbfcf; font-size:11px; }
+    .custom-output-grid strong { display:block; margin-top:6px; color:#d3e8f1; font-size:23px; }
+    .custom-output p { margin:12px 0 0; color:#adcbd8; font-size:11px; line-height:1.5; }
+    .controls { display:flex; gap:12px; align-items:stretch; margin:0 0 17px; }
+    .glass { position:relative; overflow:hidden; background:linear-gradient(145deg,rgba(204,246,255,.135),rgba(76,151,185,.075) 44%,rgba(8,35,51,.52)); border:1px solid rgba(221,250,255,.25); box-shadow:inset 0 1px rgba(255,255,255,.23),0 15px 38px rgba(0,14,26,.2); backdrop-filter:blur(22px) saturate(1.4); -webkit-backdrop-filter:blur(22px) saturate(1.4); }
+    .glass::before { content:""; position:absolute; pointer-events:none; inset:-1px; opacity:.45; background:radial-gradient(300px circle at var(--x,40%) var(--y,0%),rgba(235,255,255,.3),transparent 62%); transition:opacity .25s; }
+    .glass:hover::before { opacity:.76; }
+    .control { width:235px; border-radius:18px; padding:9px 14px 11px; }
+    .control.wide { width:260px; }
+    .control label { display:block; position:relative; z-index:1; color:#bcd7e5; font-size:11px; margin-bottom:3px; }
+    .control select { position:relative; z-index:1; width:100%; color:#fff; background:transparent; border:0; font:650 16px -apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif; outline:none; cursor:pointer; appearance:none; padding-right:20px; }
+    .control::after { content:"⌄"; position:absolute; right:17px; top:24px; color:#cdeefa; font-size:20px; pointer-events:none; }
+    .control select option { background:#173548; color:#fff; }
+    .method-note { flex:1; min-width:215px; border-radius:18px; padding:11px 18px; display:flex; flex-direction:column; justify-content:center; }
+    .method-note span { position:relative; font-size:11px; color:#b3cfdc; }
+    .method-note strong { position:relative; font-size:14px; font-weight:570; line-height:1.5; }
+    .study { border-radius:26px; padding:24px 27px 22px; }
+    .section-head { position:relative; display:flex; align-items:flex-start; justify-content:space-between; gap:20px; margin-bottom:18px; }
+    .section-head h2 { margin:0; font-size:22px; letter-spacing:-.02em; }
+    .section-head p { margin:5px 0 0; color:#b4d0de; font-size:12px; }
+    .metric-ribbon { display:flex; gap:14px; }
+    .metric { min-width:127px; padding:3px 14px 3px 16px; border-left:1px solid var(--line); }
+    .metric small { display:block; font-size:11px; color:#b0ccd9; margin-bottom:2px; }
+    .metric b { font-size:20px; letter-spacing:-.025em; font-variant-numeric:tabular-nums; }
+    .metric b.ice { color:#a7efff; }
+    .metric b.amber { color:#ffd0a8; }
+    .charts { position:relative; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .chart-box { min-width:0; padding:15px 13px 7px; background:rgba(4,26,41,.52); border:1px solid rgba(198,237,251,.13); border-radius:19px; }
+    .chart-heading { display:flex; justify-content:space-between; align-items:baseline; padding:0 6px; }
+    .chart-heading strong { font-size:14px; font-weight:650; }
+    .chart-heading small { color:#a8c5d4; font-size:11px; }
+    svg.chart { width:100%; height:213px; overflow:visible; }
+    .axis { stroke:rgba(197,231,246,.4); stroke-width:1; }
+    .grid { stroke:rgba(197,231,246,.13); stroke-width:1; }
+    .tick { fill:#a9c4d2; font-size:10px; font-variant-numeric:tabular-nums; }
+    .series { fill:none; stroke:var(--ice); stroke-width:2.7; stroke-linejoin:round; filter:drop-shadow(0 0 6px rgba(94,211,255,.35)); }
+    .dot { fill:#54c7ef; stroke:#173b52; stroke-width:2; cursor:pointer; transition:r .15s,fill .15s; }
+    .dot:hover,.dot.active { fill:#b5efff; stroke:#fff; filter:drop-shadow(0 0 7px #73d9ff); }
+    .best-ring { fill:none; stroke:#ffd09b; stroke-width:2; filter:drop-shadow(0 0 5px #ffbc79); pointer-events:none; }
+    .plot-foot { position:relative; display:flex; justify-content:space-between; gap:14px; color:#abc9d7; padding:8px 4px 0; font-size:11px; }
+    .plot-foot b { color:#d5f5ff; font-weight:600; }
+    .lower { display:grid; grid-template-columns:minmax(0,1.75fr) minmax(290px,.9fr); gap:15px; margin-top:17px; }
+    .table-wrap,.insight { border-radius:23px; min-width:0; padding:19px 20px; }
+    .panel-title { position:relative; display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:12px; }
+    .panel-title h3 { margin:0; font-size:17px; }
+    .panel-title small { color:#b5d0dd; font-size:11px; }
+    .table-scroll { position:relative; max-height:263px; overflow:auto; scrollbar-width:thin; scrollbar-color:#6d9faf transparent; }
+    table { width:100%; min-width:690px; border-collapse:collapse; font-size:12px; }
+    th { position:sticky; top:0; z-index:2; background:#193b4e; text-align:left; color:#bcd5e1; font-size:11px; font-weight:600; padding:9px 10px; }
+    td { padding:9px 10px; border-bottom:1px solid rgba(197,233,248,.09); color:#e4f5fc; font-variant-numeric:tabular-nums; }
+    tr { cursor:pointer; }
+    tbody tr:hover { background:rgba(123,211,243,.1); }
+    tbody tr.active { background:linear-gradient(90deg,rgba(112,218,242,.25),rgba(88,182,220,.08)); }
+    tbody tr.recommended { background:linear-gradient(90deg,rgba(255,196,128,.2),rgba(255,196,128,.045)); box-shadow:inset 3px 0 #ffcb92; }
+    tbody tr.recommended.active { background:linear-gradient(90deg,rgba(255,196,128,.23),rgba(112,218,242,.16)); box-shadow:inset 3px 0 #ffcb92,inset 0 0 0 1px rgba(136,224,255,.4); }
+    .feature-cell { max-width:420px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; color:#c6dce7; }
+    td:first-child { color:#e3f8ff; font-weight:680; }
+    .table-legend { position:relative; display:flex; gap:12px; flex-wrap:wrap; margin:-4px 0 11px; color:#b7d0dc; font-size:11px; }
+    .legend-best { color:#ffd3a5; }
+    .legend-selected { color:#a5eaff; }
+    .best-badge { color:#ffd3a5; font-weight:700; white-space:nowrap; }
+    .baseline-badge { color:#b6dcea; white-space:nowrap; }
+    .insight { background:linear-gradient(145deg,rgba(221,253,255,.17),rgba(60,143,179,.11) 45%,rgba(7,31,48,.58)); }
+    .insight .eyebrow { position:relative; display:inline-block; color:#addcea; font-size:12px; margin-bottom:8px; }
+    .insight .big { position:relative; font-size:35px; line-height:1; font-weight:750; letter-spacing:-.045em; color:#e6fbff; }
+    .insight .big small { font-size:15px; font-weight:550; color:#b4d5e0; letter-spacing:0; }
+    .feature-list { position:relative; min-height:82px; margin:13px 0 13px; font-size:12px; line-height:1.55; color:#d9ecf5; }
+    .insight .note { position:relative; border-top:1px solid var(--line); padding-top:12px; color:#f2d6c6; font-size:11px; line-height:1.55; }
+    .conclusion { margin-top:17px; padding:23px 25px 21px; border-radius:25px; }
+    .conclusion-head { position:relative; display:flex; justify-content:space-between; align-items:end; gap:15px; margin-bottom:17px; }
+    .conclusion-head .eyebrow { display:block; margin-bottom:5px; color:#98dcef; font-size:10px; font-weight:700; letter-spacing:.1em; }
+    .conclusion-head h2 { margin:0; font-size:24px; }
+    .conclusion-head p { margin:5px 0 0; color:#b8d3df; font-size:12px; }
+    .conclusion-tag { align-self:start; padding:7px 11px; border:1px solid rgba(255,207,154,.4); border-radius:100px; color:#ffdbb4; background:rgba(255,184,116,.1); font-size:11px; white-space:nowrap; }
+    .conclusion-grid { position:relative; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .conclusion-card { min-width:0; padding:19px 20px; border:1px solid rgba(190,235,250,.18); border-radius:19px; background:rgba(5,31,47,.5); }
+    .conclusion-card .label { color:#9bdceb; font-size:11px; font-weight:700; }
+    .conclusion-card h3 { margin:8px 0 7px; font-size:21px; line-height:1.3; }
+    .conclusion-card p { margin:9px 0 0; color:#d3e7f0; font-size:12px; line-height:1.6; }
+    .conclusion-card .feature-summary { color:#bfe1ec; }
+    .conclusion-card .evidence { padding-top:10px; border-top:1px solid var(--line); }
+    .conclusion-card .limit { color:#f0d6c3; }
+    .conclusion-metrics { display:flex; flex-wrap:wrap; gap:8px 17px; margin-top:13px; }
+    .conclusion-metrics span { color:#bad4df; font-size:11px; }
+    .conclusion-metrics b { display:block; color:#f1fbff; font-size:18px; font-variant-numeric:tabular-nums; }
+    .conclusion-foot { position:relative; margin:15px 0 0; color:#a9c7d5; font-size:11px; line-height:1.55; }
+    .footer { display:flex; justify-content:space-between; gap:20px; color:#9fbbc9; font-size:11px; margin:17px 5px 0; }
+    :focus-visible { outline:2px solid #9deaff; outline-offset:3px; }
+    @media (max-width:1050px) { .section-head { flex-direction:column; } .lower,.conclusion-grid,.custom-grid { grid-template-columns:1fr; } }
+    @media (max-width:740px) { .shell { padding:16px 13px 30px; } .topline { padding-bottom:16px; } .top-right { gap:7px; } .top-right .meta { display:none; } .hero { margin:15px 0; padding:23px 18px 19px; } .hero h1 { font-size:30px; } .hero p { font-size:13px; } .dataset-stats { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:18px; padding-top:16px; } .dataset-stat { padding:12px 10px; } .dataset-stat strong { font-size:27px; } .dataset-stat span { font-size:10px; } .mode-switch { gap:5px; } .mode-switch button { flex:1; padding:10px 7px; font-size:12px; } .mode-switch small { width:100%; margin:0; padding:5px 7px 1px; } .controls { flex-wrap:wrap; } .control,.control.wide { width:calc(50% - 6px); } .method-note { width:100%; flex:auto; } .study { padding:18px 13px; } .charts { grid-template-columns:1fr; } .metric-ribbon { flex-wrap:wrap; } .metric { min-width:108px; } .conclusion { padding:19px 15px; } .conclusion-head,.custom-head { align-items:start; flex-wrap:wrap; } .conclusion-card { padding:16px; } .custom-workspace { padding:19px 14px; } .custom-card { padding:16px; } .custom-output-grid { grid-template-columns:repeat(2,1fr); } .footer { flex-direction:column; } }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { transition:none !important; animation:none !important; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topline">
+      <div class="brand"><span class="brand-mark">◌</span><span>Seoul Bike <span style="color:#9bc8dc;font-weight:500">/ Regression Lab</span></span></div>
+      <div class="top-right"><span class="live-dot"></span><span class="meta">本機可操作預覽</span><span class="trial-tag">示意畫面 · 試跑數據</span></div>
+    </header>
+    <section class="hero" id="officialHero" aria-labelledby="pageTitle">
+      <div class="hero-labels"><span>DATA SCIENCE PROJECT</span><span>CRISP-DM</span><span>MULTIPLE LINEAR REGRESSION</span></div>
+      <h1 id="pageTitle">Seoul Bike Sharing<br><em>多元線性迴歸與特徵選擇</em></h1>
+      <p>比較不同特徵數與實際特徵組合，觀察首爾自行車租借量的 RMSE 與 R² 如何變化。</p>
+      <div class="dataset-stats" aria-label="資料集摘要">
+        <div class="dataset-stat"><strong>8,760</strong><span>每小時觀測資料</span></div>
+        <div class="dataset-stat"><strong>12</strong><span>原始候選特徵</span></div>
+        <div class="dataset-stat"><strong>14</strong><span>編碼後模型欄位</span></div>
+        <div class="dataset-stat"><strong>2</strong><span>租借量預測任務</span></div>
+      </div>
+      <div class="hero-meta"><span>資料期間 <b>2017.12–2018.11</b></span><span>驗證方式 <b>時間序列 3 折</b></span><span>資料來源 <b>Kaggle Seoul Bike Sharing</b></span></div>
+    </section>
+    <section class="hero" id="customHero" aria-labelledby="customHeroTitle" hidden>
+      <div class="hero-labels"><span>加分 2</span><span>YOUR CSV DATASET</span><span>MULTIPLE LINEAR REGRESSION</span></div>
+      <h1 id="customHeroTitle">自訂資料集<br><em>特徵選擇實驗室</em></h1>
+      <p>選擇自己的連續數值預測目標，讓同一套分析流程重新尋找適合的特徵數與組合。</p>
+      <div class="dataset-stats" aria-label="自訂資料摘要"><div class="dataset-stat"><strong>—</strong><span>資料筆數 · 待載入</span></div><div class="dataset-stat"><strong>—</strong><span>原始欄位 · 待檢查</span></div><div class="dataset-stat"><strong>—</strong><span>候選特徵 · 待選擇</span></div><div class="dataset-stat"><strong>—</strong><span>目標欄位 · 待指定</span></div></div>
+      <div class="hero-meta"><span>模式 <b>瀏覽器端計算規劃</b></span><span>狀態 <b>介面預覽，分析引擎尚未啟用</b></span></div>
+    </section>
+    <nav class="mode-switch glass" aria-label="資料模式切換">
+      <button type="button" id="officialMode" aria-pressed="true"><span class="mode-badge">+1</span>官方資料 · Seoul Bike</button>
+      <button type="button" id="customMode" aria-pressed="false"><span class="mode-badge">+2</span>自訂 CSV</button>
+      <small>切換資料來源與分析流程</small>
+    </nav>
+    <section class="controls" id="officialControls" aria-label="分析選項">
+      <div class="control glass bonus-one-control"><label for="problem">預測任務 <span class="bonus-flag">加分 1</span></label><select id="problem"><option value="current_hour">Problem 1 · 當小時需求</option><option value="next_hour">Problem 2 · 下一小時需求</option></select></div>
+      <div class="control wide glass"><label for="method">特徵選擇方法</label><select id="method"><option value="RFE">RFE 路徑</option><option value="SelectKBest">SelectKBest</option><option value="Lasso Path">Lasso 路徑</option><option value="All Features">全特徵基準</option></select></div>
+      <div class="control glass"><label for="featureCount">特徵數量</label><select id="featureCount" aria-label="選擇特徵數量"></select></div>
+      <div class="method-note glass"><span>判讀基準</span><strong id="methodText">逐步移除特徵，觀察時間驗證誤差如何變動。</strong></div>
+    </section>
+    <section class="study glass" id="officialStudy">
+      <div class="section-head"><div><h2>特徵數如何改變預測？</h2><p>兩圖與下方表格共用同一批試跑結果；點選曲線或表格可查看完整組合。</p></div><div class="metric-ribbon"><div class="metric"><small>目前選取</small><b class="ice" id="metricK">5 個特徵</b></div><div class="metric"><small>驗證 RMSE</small><b id="metricRmse">580.07</b></div><div class="metric"><small>驗證 R²</small><b class="amber" id="metricR2">0.119</b></div></div></div>
+      <div class="charts"><div class="chart-box"><div class="chart-heading"><strong>RMSE × 特徵數</strong><small>越低越好</small></div><svg class="chart" id="rmseChart" role="img" aria-label="特徵數對驗證 RMSE"></svg></div><div class="chart-box"><div class="chart-heading"><strong>R² × 特徵數</strong><small>越高越好</small></div><svg class="chart" id="r2Chart" role="img" aria-label="特徵數對驗證 R 平方"></svg></div></div>
+      <div class="plot-foot"><span>橫軸：編碼後模型欄位數 <b>k</b></span><span>時間驗證 3 折平均 · <b>滑過資料點看數值，點選看組合</b></span></div>
+    </section>
+    <section class="lower" id="officialLower">
+      <div class="table-wrap glass">
+        <div class="panel-title"><h3>每個 k 的實際特徵組合</h3><small id="rowCount">14 組已計算結果</small></div>
+        <div class="table-legend"><span class="legend-best">★ 金色：該方法驗證 RMSE 最低</span><span class="legend-selected">● 藍色：目前點選</span></div>
+        <div class="table-scroll"><table><thead><tr><th style="width:45px">k</th><th>完整訓練區間選出的特徵</th><th style="width:80px">RMSE</th><th style="width:65px">R²</th><th style="width:102px">狀態</th></tr></thead><tbody id="rows"></tbody></table></div>
+      </div>
+      <aside class="insight glass"><span class="eyebrow">目前選取的組合</span><div class="big"><span id="insightK">5</span> <small>個模型欄位</small></div><div class="feature-list" id="features"></div><div class="note" id="caution"></div></aside>
+    </section>
+    <section class="conclusion glass" id="officialConclusion" aria-labelledby="conclusionTitle">
+      <div class="conclusion-head"><div><span class="eyebrow">CRISP-DM / EVALUATION</span><h2 id="conclusionTitle">訓練結論</h2><p>驗證階段決定候選；測試期只用來檢查事先選定的方案。</p></div><span class="conclusion-tag">本機試跑 · 暫定分析</span></div>
+      <div class="conclusion-grid">
+        <article class="conclusion-card"><span class="label" id="methodConclusionLabel">目前方法的最低驗證誤差組合</span><h3 id="methodConclusionTitle"></h3><p class="feature-summary" id="methodConclusionFeatures"></p><div class="conclusion-metrics"><span>驗證 RMSE<b id="methodCvRmse"></b></span><span>驗證 R²<b id="methodCvR2"></b></span><span>測試 MAE<b id="methodTestMae"></b></span><span>測試 RMSE<b id="methodTestRmse"></b></span><span>測試 R²<b id="methodTestR2"></b></span></div><p class="evidence" id="methodComparison"></p></article>
+        <article class="conclusion-card"><span class="label">跨方法暫定推薦與限制</span><h3 id="overallConclusionTitle"></h3><p class="feature-summary" id="overallConclusionFeatures"></p><p class="evidence" id="overallEvidence"></p><p class="limit" id="overallLimit"></p></article>
+      </div>
+      <p class="conclusion-foot">「最低」僅指這次已評估候選的三折時間驗證 RMSE；課程最終特徵數計數口徑仍待確認。正式成果需補齊模型方程式、係數解讀及完整殘差分析。</p>
+    </section>
+    <section class="custom-workspace glass" id="customView" aria-labelledby="customTitle" hidden>
+      <div class="custom-head"><div><span class="eyebrow">加分 2 / CUSTOM DATASET</span><h2 id="customTitle">讓另一份 CSV 也能找到合適的特徵組合</h2><p>正式版將在瀏覽器載入表格型資料、選擇連續數值目標，並重新計算特徵選擇與多元線性迴歸結果。此處先展示操作入口與結果版位。</p></div><span class="conclusion-tag">介面預覽 · 尚未啟用計算</span></div>
+      <div class="custom-grid">
+        <div class="custom-card"><span class="custom-step">01 / 資料來源</span><h3>載入自訂資料集</h3><div class="source-tabs" aria-label="CSV 來源"><button type="button" id="fileSource" aria-pressed="true">上傳本機 CSV</button><button type="button" id="urlSource" aria-pressed="false">公開 CSV URL</button></div><div id="fileSourceField"><label class="custom-field" for="customFile">選擇 CSV 檔案<input id="customFile" type="file" accept=".csv,text/csv"></label><p class="custom-help">正式版將在瀏覽器本機分析；自訂檔案不會自動上傳 GitHub。</p></div><div id="urlSourceField" hidden><label class="custom-field" for="customUrl">公開 CSV 網址<input id="customUrl" type="url" placeholder="https://raw.githubusercontent.com/.../data.csv" inputmode="url"></label><p class="custom-help">網址需直接回傳 CSV，並允許瀏覽器跨來源讀取（CORS）。</p></div><div class="custom-status" id="customStatus" role="status">尚未選擇資料；目前只展示加分項的操作介面。</div></div>
+        <div class="custom-card"><span class="custom-step">02 / 分析設定</span><h3>指定預測目標與特徵</h3><label class="custom-field" for="customTarget">連續數值目標欄<select id="customTarget" disabled><option>載入資料後產生欄位選項</option></select></label><label class="custom-field" for="customTime">時間欄（可選）<select id="customTime" disabled><option>依資料欄位選擇；無時間欄時另訂切分</option></select></label><div class="feature-placeholder">候選特徵清單會在資料檢查後顯示；執行前還需確認欄位型態、缺值與編碼後維度。</div><button class="run-preview" type="button" disabled>分析引擎建置中 · 尚不能執行訓練</button></div>
+      </div>
+      <div class="custom-output"><span class="custom-step">03 / 當次結果</span><h3>運算完成後呈現</h3><div class="custom-output-grid"><div>最佳特徵數<strong>—</strong></div><div>驗證 RMSE<strong>—</strong></div><div>驗證 R²<strong>—</strong></div><div>完整特徵組合<strong>—</strong></div></div><p>正式版將在此接上與官方模式相同的 RMSE／R² 雙圖、逐列特徵表、測試檢查及訓練結論；尚未載入或計算時不顯示示例分數。</p></div>
+    </section>
+    <footer class="footer"><span>Seoul Bike Sharing · CRISP-DM 選題推演</span><span>這是視覺與互動概念稿；正式模型、結論與部署尚未完成。</span></footer>
+  </main>
+  <script src="results/mockup_data.js"></script>
+  <script>
+    const source = window.TRIAL_DATA.tasks;
+    const labels = { RFE:'逐步移除特徵，觀察時間驗證誤差如何變動。', SelectKBest:'依單一特徵與目標的統計關係排序，再比較不同 k。', 'Lasso Path':'只呈現正則化路徑實際出現的特徵數，不補畫缺點。', 'All Features':'保留全部 14 個編碼後欄位，作為多元線性迴歸基準。' };
+    const methodNames = { RFE:'RFE 路徑', SelectKBest:'SelectKBest', 'Lasso Path':'Lasso 路徑', 'All Features':'全特徵基準' };
+    const $ = id => document.getElementById(id);
+    const state = { task:'current_hour', method:'RFE', k:null };
+    const fmt = (value,digits=2) => Number(value).toFixed(digits);
+    function svgElement(tag,attrs,parent) { const el=document.createElementNS('http://www.w3.org/2000/svg',tag); for(const [key,value] of Object.entries(attrs)) el.setAttribute(key,value); parent.appendChild(el); return el; }
+    function draw(svgId,rows,key) {
+      const svg=$(svgId); svg.replaceChildren(); svg.setAttribute('viewBox','0 0 560 210');
+      const left=50,right=542,top=23,bottom=171;
+      const xs=rows.map(r=>r.k), ys=rows.map(r=>r[key]);
+      const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+      const pad=(maxY-minY||Math.abs(maxY)*.08||1)*.18;
+      const lo=minY-pad,hi=maxY+pad;
+      const xp=k=>minX===maxX?(left+right)/2:left+(k-minX)/(maxX-minX)*(right-left);
+      const yp=v=>bottom-(v-lo)/(hi-lo)*(bottom-top);
+      for(let i=0;i<4;i++) { const y=top+(bottom-top)*i/3, value=hi-(hi-lo)*i/3; svgElement('line',{x1:left,y1:y,x2:right,y2:y,class:'grid'},svg); const t=svgElement('text',{x:left-9,y:y+4,'text-anchor':'end',class:'tick'},svg);t.textContent=key==='cv_rmse_mean'?Math.round(value):fmt(value,2); }
+      svgElement('line',{x1:left,y1:bottom,x2:right,y2:bottom,class:'axis'},svg);
+      const shown=xs.length<=7?xs:xs.filter((_,i)=>i%2===0||i===xs.length-1);
+      shown.forEach(k=>{const t=svgElement('text',{x:xp(k),y:bottom+20,'text-anchor':'middle',class:'tick'},svg);t.textContent=k;});
+      svgElement('path',{d:rows.map((r,i)=>`${i?'L':'M'}${xp(r.k)},${yp(r[key])}`).join(' '),class:'series'},svg);
+      rows.forEach(r=>{const recommended=state.method!=='All Features'&&r.k===source[state.task].methods[state.method].chosen_k;const description=`k ${r.k}，${key==='cv_rmse_mean'?'RMSE '+fmt(r[key]):'R平方 '+fmt(r[key],3)}${recommended?'，該方法驗證 RMSE 最低':''}`;if(recommended)svgElement('circle',{cx:xp(r.k),cy:yp(r[key]),r:10,class:'best-ring'},svg);const circle=svgElement('circle',{cx:xp(r.k),cy:yp(r[key]),r:r.k===state.k?6:4.5,class:`dot${r.k===state.k?' active':''}`,tabindex:'0','aria-label':description},svg);svgElement('title',{},circle).textContent=description;circle.addEventListener('click',()=>choose(r.k));circle.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose(r.k);}});});
+    }
+    function choose(k) {state.k=k;render();const row=document.querySelector(`tr[data-k="${k}"]`);if(row)row.scrollIntoView({block:'nearest'});}
+    function render() {
+      const method=source[state.task].methods[state.method],rows=method.rows;
+      if(!rows.length)return;
+      if(!rows.some(r=>r.k===state.k))state.k=method.chosen_k;
+      const selected=rows.find(r=>r.k===state.k)||rows[0];
+      const countSelect=$('featureCount');countSelect.replaceChildren();rows.forEach(r=>{const option=document.createElement('option');option.value=r.k;option.textContent=`${r.k} 個特徵`;countSelect.appendChild(option);});countSelect.value=String(state.k);
+      $('methodText').textContent=labels[state.method];$('rowCount').textContent=`${rows.length} 組已計算結果`;
+      $('metricK').textContent=`${selected.k} 個特徵`;$('metricRmse').textContent=fmt(selected.cv_rmse_mean);$('metricR2').textContent=fmt(selected.cv_r2_mean,3);
+      $('insightK').textContent=selected.k;$('features').textContent=selected.selected_features_full_train.join(' · ');
+      const task=source[state.task],winner=task.overall_winner,baseline=task.methods['All Features'].test;
+      $('caution').textContent=state.method==='All Features'?'這是全特徵基準，僅有 k=14 一個實際結果。':state.k===method.chosen_k?'★ 此列是目前方法在試跑中驗證 RMSE 最低的組合。':'這是目前點選的探索組合；金色列才是此方法的最低驗證 RMSE 組合。';
+      const methodBest=rows.find(r=>r.k===method.chosen_k);
+      $('methodConclusionLabel').textContent=state.method==='All Features'?'全特徵單點基準':'目前方法的最低驗證誤差組合';
+      $('methodConclusionTitle').textContent=`${methodNames[state.method]} · ${method.chosen_k} 個欄位`;
+      $('methodConclusionFeatures').textContent=methodBest.selected_features_full_train.join(' · ');
+      $('methodCvRmse').textContent=fmt(methodBest.cv_rmse_mean);$('methodCvR2').textContent=fmt(methodBest.cv_r2_mean,3);
+      $('methodTestMae').textContent=fmt(method.test.mae);$('methodTestRmse').textContent=fmt(method.test.rmse);$('methodTestR2').textContent=fmt(method.test.r2,3);
+      const methodDelta=method.test.rmse-baseline.rmse;
+      $('methodComparison').textContent=Math.abs(methodDelta)<.005?'測試期 RMSE 與全特徵基準相同。':`測試期 RMSE 比全特徵基準${methodDelta>0?'高':'低'} ${fmt(Math.abs(methodDelta))}；這是測試檢查，不用於重新挑選組合。`;
+      const winnerRow=task.methods[winner.method].rows.find(r=>r.k===winner.k),overallDelta=winner.test.rmse-baseline.rmse;
+      $('overallConclusionTitle').textContent=`${methodNames[winner.method]} · ${winner.k} 個欄位`;
+      $('overallConclusionFeatures').textContent=winner.features.join(' · ');
+      $('overallEvidence').textContent=`已評估候選中，三折時間驗證 RMSE 最低為 ${fmt(winnerRow.cv_rmse_mean)}；測試期 RMSE ${fmt(winner.test.rmse)}，比全特徵基準${overallDelta>=0?'高':'低'} ${fmt(Math.abs(overallDelta))}。較少特徵在這次測試期${overallDelta>=0?'未改善':'改善了'} RMSE。`;
+      $('overallLimit').textContent=`營運日測試 R² 為 ${fmt(winner.functioning_test.r2,3)}，與整體不同；另有 ${winner.negative_prediction_count} 筆負租借量預測（${fmt(winner.negative_prediction_pct)}%）。結論只適用於本次資料、切分與驗證規則。`;
+      for(const [svg,key] of [['rmseChart','cv_rmse_mean'],['r2Chart','cv_r2_mean']])draw(svg,rows,key);
+      const body=$('rows');body.replaceChildren();
+      rows.forEach(r=>{const tr=document.createElement('tr'),recommended=state.method!=='All Features'&&r.k===method.chosen_k;tr.dataset.k=r.k;tr.className=[r.k===state.k?'active':'',recommended?'recommended':''].filter(Boolean).join(' ');for(const [value,cls] of [[r.k,''],[r.selected_features_full_train.join('、'),'feature-cell'],[fmt(r.cv_rmse_mean),''],[fmt(r.cv_r2_mean,3),'']]){const td=document.createElement('td');td.textContent=value;if(cls)td.className=cls;tr.appendChild(td);}const status=document.createElement('td');if(recommended||state.method==='All Features'){const badge=document.createElement('span');badge.className=recommended?'best-badge':'baseline-badge';badge.textContent=recommended?'★ 驗證最低':'單點基準';status.appendChild(badge);}tr.appendChild(status);tr.tabIndex=0;tr.addEventListener('click',()=>choose(r.k));tr.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose(r.k);}});body.appendChild(tr);});
+    }
+    $('problem').addEventListener('change',e=>{state.task=e.target.value;state.k=null;render();});
+    $('method').addEventListener('change',e=>{state.method=e.target.value;state.k=null;render();});
+    $('featureCount').addEventListener('change',e=>choose(Number(e.target.value)));
+    function setMode(mode) {
+      const official=mode==='official';
+      for(const id of ['officialHero','officialControls','officialStudy','officialLower','officialConclusion'])$(id).hidden=!official;
+      $('customHero').hidden=official;$('customView').hidden=official;
+      $('officialMode').setAttribute('aria-pressed',String(official));$('customMode').setAttribute('aria-pressed',String(!official));
+    }
+    function setSource(sourceType) {
+      const file=sourceType==='file';
+      $('fileSourceField').hidden=!file;$('urlSourceField').hidden=file;
+      $('fileSource').setAttribute('aria-pressed',String(file));$('urlSource').setAttribute('aria-pressed',String(!file));
+      $('customStatus').textContent=file?'請選擇本機 CSV；此示意頁目前不解析欄位或執行訓練。':'請輸入可公開讀取的 CSV URL；此示意頁目前不發送網址請求或執行訓練。';
+    }
+    $('officialMode').addEventListener('click',()=>setMode('official'));
+    $('customMode').addEventListener('click',()=>setMode('custom'));
+    $('fileSource').addEventListener('click',()=>setSource('file'));
+    $('urlSource').addEventListener('click',()=>setSource('url'));
+    $('customFile').addEventListener('change',e=>{$('customStatus').textContent=e.target.files.length?`已選擇「${e.target.files[0].name}」。此介面預覽尚未解析欄位或執行訓練。`:'尚未選擇 CSV 檔案。';});
+    $('customUrl').addEventListener('input',e=>{$('customStatus').textContent=e.target.value.trim()?'已輸入 CSV URL；尚未檢查可存取性或跨來源讀取權限。':'尚未輸入 CSV URL。';});
+    document.querySelectorAll('.glass,.hero').forEach(el=>el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.setProperty('--x',`${e.clientX-r.left}px`);el.style.setProperty('--y',`${e.clientY-r.top}px`);}));
+    render();
+  </script>
+</body>
+</html>

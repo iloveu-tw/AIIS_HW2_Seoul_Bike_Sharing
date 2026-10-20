@@ -1,0 +1,51 @@
+{
+  "winner": {
+    "method": "RFECV",
+    "k": 6,
+    "features": [
+      "Hour",
+      "Temperature(°C)",
+      "Humidity(%)",
+      "Seasons_Spring",
+      "Seasons_Winter",
+      "Functioning Day_Yes"
+    ],
+    "cv_rmse": 590.7317788809819,
+    "cv_r2": 0.07657979279469651,
+    "source": "nested selector",
+    "test": {
+      "mae": 319.4092867745049,
+      "rmse": 438.0717517153192,
+      "r2": 0.4898489665205258
+    },
+    "equation": {
+      "intercept": -118.70967190711667,
+      "coefficients": {
+        "Hour": 24.28083746816999,
+        "Temperature(°C)": 22.580402014811206,
+        "Humidity(%)": -8.06171967931082,
+        "Seasons_Spring": -53.25777573309892,
+        "Seasons_Winter": -296.91565478234287,
+        "Functioning Day_Yes": 820.2463512862192
+      }
+    },
+    "negative_prediction_count": 98,
+    "functioning_test": {
+      "mae": 320.0312813350073,
+      "rmse": 446.3601035822649,
+      "r2": 0.4057486238777004
+    },
+    "nonfunctioning_test_count": 223
+  },
+  "mean_baseline_test": {
+    "mae": 500.9983789042008,
+    "rmse": 616.8126370016538,
+    "r2": -0.011381016274732758
+  },
+  "holdout_was_seen_in_feasibility": true,
+  "limitations": [
+    "條件式可得氣象／營運資訊",
+    "曾在選題階段查看留出期",
+    "線性模型可能預測負租借量"
+  ]
+}

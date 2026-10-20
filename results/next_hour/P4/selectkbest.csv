@@ -1,0 +1,15 @@
+k,features,cv_rmse,cv_r2,cv_rmse_sd
+1,['Temperature(°C)'],635.539113964818,-0.06415298448683922,158.83954857254727
+2,"['Temperature(°C)', 'Seasons_Winter']",643.3260383164117,-0.09004355190844349,164.65714589544794
+3,"['Temperature(°C)', 'Dew point temperature(°C)', 'Seasons_Winter']",623.8597269420551,-0.016037102630124995,167.08544279615475
+4,"['Hour', 'Temperature(°C)', 'Dew point temperature(°C)', 'Seasons_Winter']",617.2237333930058,0.00794705024615531,171.22305358796288
+5,"['Hour', 'Temperature(°C)', 'Dew point temperature(°C)', 'Seasons_Summer', 'Seasons_Winter']",622.4221415199918,-0.012412979902739485,172.4335380832532
+6,"['Hour', 'Temperature(°C)', 'Dew point temperature(°C)', 'Solar Radiation (MJ/m2)', 'Seasons_Summer', 'Seasons_Winter']",605.5893239192574,0.043179892605400484,162.46397677953118
+7,"['Hour', 'Temperature(°C)', 'Visibility (10m)', 'Dew point temperature(°C)', 'Solar Radiation (MJ/m2)', 'Seasons_Summer', 'Seasons_Winter']",602.69786485168,0.04948930476525134,158.94751942888186
+8,"['Hour', 'Temperature(°C)', 'Humidity(%)', 'Visibility (10m)', 'Dew point temperature(°C)', 'Solar Radiation (MJ/m2)', 'Seasons_Summer', 'Seasons_Winter']",599.8562727672647,0.06029453332573483,162.10593663368755
+9,"['Hour', 'Temperature(°C)', 'Humidity(%)', 'Visibility (10m)', 'Dew point temperature(°C)', 'Solar Radiation (MJ/m2)', 'Snowfall (cm)', 'Seasons_Summer', 'Seasons_Winter']",597.4669363282324,0.07052272677359532,167.35898038004052
+10,"['Hour', 'Temperature(°C)', 'Humidity(%)', 'Wind speed (m/s)', 'Visibility (10m)', 'Dew point temperature(°C)', 'Solar Radiation (MJ/m2)', 'Snowfall (cm)', 'Seasons_Summer', 'Seasons_Winter']",597.6229769513765,0.06954907584848624,166.72012384192672
+11,"['Hour', 'Temperature(°C)', 'Humidity(%)', 'Wind speed (m/s)', 'Visibility (10m)', 'Dew point temperature(°C)', 'Solar Radiation (MJ/m2)', 'Rainfall(mm)', 'Snowfall (cm)', 'Seasons_Summer', 'Seasons_Winter']",603.3816876813581,0.04946991001852352,169.9871837119152
+12,"['Hour', 'Temperature(°C)', 'Humidity(%)', 'Wind speed (m/s)', 'Visibility (10m)', 'Dew point temperature(°C)', 'Solar Radiation (MJ/m2)', 'Rainfall(mm)', 'Snowfall (cm)', 'Seasons_Summer', 'Seasons_Winter', 'Functioning Day_Yes']",600.4526269416101,0.05553100363168421,166.82684221386677
+13,"['Hour', 'Temperature(°C)', 'Humidity(%)', 'Wind speed (m/s)', 'Visibility (10m)', 'Dew point temperature(°C)', 'Solar Radiation (MJ/m2)', 'Rainfall(mm)', 'Snowfall (cm)', 'Seasons_Summer', 'Seasons_Winter', 'Holiday_No Holiday', 'Functioning Day_Yes']",596.2511675768379,0.0651266478067054,162.9020831461261
+14,"['Hour', 'Temperature(°C)', 'Humidity(%)', 'Wind speed (m/s)', 'Visibility (10m)', 'Dew point temperature(°C)', 'Solar Radiation (MJ/m2)', 'Rainfall(mm)', 'Snowfall (cm)', 'Seasons_Spring', 'Seasons_Summer', 'Seasons_Winter', 'Holiday_No Holiday', 'Functioning Day_Yes']",593.2020691834672,0.0754153122077595,160.40183721439627

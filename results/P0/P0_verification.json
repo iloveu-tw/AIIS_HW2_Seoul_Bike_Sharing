@@ -1,0 +1,65 @@
+{
+  "stage": "P0-2",
+  "status": "STRUCTURE_PASS_REVIEW_REQUIRED",
+  "checked_at_utc": "2026-10-19T10:08:54.119602+00:00",
+  "dataset_id": "joebeachcapital/seoul-bike-sharing",
+  "dataset_version": 1,
+  "sha256": "373339b71a8935d69e9af0abf26a70744632119862eeb3919efb389a7b749c60",
+  "encoding": "cp1252",
+  "rows": 8760,
+  "columns": 14,
+  "target": "Rented Bike Count",
+  "missing_cells": 0,
+  "duplicate_rows": 0,
+  "invalid_dates": 0,
+  "numeric_invalid_counts": {
+    "Rented Bike Count": 0,
+    "Hour": 0,
+    "Temperature(°C)": 0,
+    "Humidity(%)": 0,
+    "Wind speed (m/s)": 0,
+    "Visibility (10m)": 0,
+    "Dew point temperature(°C)": 0,
+    "Solar Radiation (MJ/m2)": 0,
+    "Rainfall(mm)": 0,
+    "Snowfall (cm)": 0
+  },
+  "selected_original_features": 12,
+  "train_rows": 7008,
+  "test_rows": 1752,
+  "split": "chronological_80_20",
+  "numeric_features": [
+    "Hour",
+    "Temperature(°C)",
+    "Humidity(%)",
+    "Wind speed (m/s)",
+    "Visibility (10m)",
+    "Dew point temperature(°C)",
+    "Solar Radiation (MJ/m2)",
+    "Rainfall(mm)",
+    "Snowfall (cm)"
+  ],
+  "binary_features": [
+    "Holiday",
+    "Functioning Day"
+  ],
+  "categorical_features": [
+    "Seasons"
+  ],
+  "training_category_levels": {
+    "Seasons": [
+      "Autumn",
+      "Spring",
+      "Summer",
+      "Winter"
+    ]
+  },
+  "encoded_model_features": 14,
+  "feature_range_pass": true,
+  "encoding_error": null,
+  "manual_review": [
+    "Functioning Day 是否在預測時已知",
+    "時間切分是否符合研究目的",
+    "Kaggle 授權與引用條件"
+  ]
+}

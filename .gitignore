@@ -1,0 +1,11 @@
+backups/
+data/raw/
+data/candidates/
+data/processed/
+models/
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.DS_Store
+*.log

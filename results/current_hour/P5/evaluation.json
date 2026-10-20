@@ -1,0 +1,65 @@
+{
+  "winner": {
+    "method": "SelectKBest",
+    "k": 13,
+    "features": [
+      "Hour",
+      "Temperature(°C)",
+      "Humidity(%)",
+      "Wind speed (m/s)",
+      "Visibility (10m)",
+      "Dew point temperature(°C)",
+      "Solar Radiation (MJ/m2)",
+      "Rainfall(mm)",
+      "Snowfall (cm)",
+      "Seasons_Summer",
+      "Seasons_Winter",
+      "Holiday_No Holiday",
+      "Functioning Day_Yes"
+    ],
+    "cv_rmse": 591.3385798476285,
+    "cv_r2": 0.07939466507119937,
+    "source": "validated k path",
+    "test": {
+      "mae": 304.35655174365854,
+      "rmse": 424.13953598607975,
+      "r2": 0.5217821463544721
+    },
+    "equation": {
+      "intercept": -238.516354965941,
+      "coefficients": {
+        "Hour": 27.58440024177114,
+        "Temperature(°C)": 18.566395186324936,
+        "Humidity(%)": -9.977354048692535,
+        "Wind speed (m/s)": 23.495712874265788,
+        "Visibility (10m)": 0.024851826741547612,
+        "Dew point temperature(°C)": 9.716762539111857,
+        "Solar Radiation (MJ/m2)": -82.4757561513741,
+        "Rainfall(mm)": -59.064392753516294,
+        "Snowfall (cm)": 59.89513181687907,
+        "Seasons_Summer": -54.251389427973834,
+        "Seasons_Winter": -235.32084222863804,
+        "Holiday_No Holiday": 118.43839496077022,
+        "Functioning Day_Yes": 868.9839319576212
+      }
+    },
+    "negative_prediction_count": 112,
+    "functioning_test": {
+      "mae": 305.05618776691585,
+      "rmse": 432.9585220603602,
+      "r2": 0.44089671807823894
+    },
+    "nonfunctioning_test_count": 223
+  },
+  "mean_baseline_test": {
+    "mae": 500.9993767722733,
+    "rmse": 616.8192635466597,
+    "r2": -0.011402747339956498
+  },
+  "holdout_was_seen_in_feasibility": true,
+  "limitations": [
+    "條件式可得氣象／營運資訊",
+    "曾在選題階段查看留出期",
+    "線性模型可能預測負租借量"
+  ]
+}

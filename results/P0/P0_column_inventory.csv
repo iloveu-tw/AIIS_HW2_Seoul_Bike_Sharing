@@ -1,0 +1,15 @@
+﻿column,dtype,unique_count,missing_count,role
+Date,str,365,0,date
+Rented Bike Count,int64,2166,0,target
+Hour,int64,24,0,input
+Temperature(°C),float64,546,0,input
+Humidity(%),int64,90,0,input
+Wind speed (m/s),float64,65,0,input
+Visibility (10m),int64,1789,0,input
+Dew point temperature(°C),float64,556,0,input
+Solar Radiation (MJ/m2),float64,345,0,input
+Rainfall(mm),float64,61,0,input
+Snowfall (cm),float64,51,0,input
+Seasons,str,4,0,input
+Holiday,str,2,0,input
+Functioning Day,str,2,0,input

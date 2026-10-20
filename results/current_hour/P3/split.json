@@ -1,0 +1,26 @@
+{
+  "target": "Rented Bike Count",
+  "horizon_hours": 0,
+  "n_train": 7008,
+  "n_test": 1752,
+  "first_test_target_time": "2018-09-19 00:00:00",
+  "last_train_target_time": "2018-09-18 23:00:00",
+  "candidate_raw_features": 12,
+  "encoded_columns": [
+    "Hour",
+    "Temperature(°C)",
+    "Humidity(%)",
+    "Wind speed (m/s)",
+    "Visibility (10m)",
+    "Dew point temperature(°C)",
+    "Solar Radiation (MJ/m2)",
+    "Rainfall(mm)",
+    "Snowfall (cm)",
+    "Seasons_Spring",
+    "Seasons_Summer",
+    "Seasons_Winter",
+    "Holiday_No Holiday",
+    "Functioning Day_Yes"
+  ],
+  "split": "ordered 80/20; 3 expanding TimeSeriesSplit folds in training"
+}

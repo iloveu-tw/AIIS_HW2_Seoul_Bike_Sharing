@@ -1,0 +1,6 @@
+k,selected_features_full_train,cv_rmse_mean,cv_rmse_sd,cv_r2_mean
+4,"['Hour', 'Temperature(°C)', 'Humidity(%)', 'Seasons_Winter']",611.976282534228,164.40028997188224,0.022764807948380244
+7,"['Hour', 'Temperature(°C)', 'Humidity(%)', 'Visibility (10m)', 'Rainfall(mm)', 'Seasons_Winter', 'Functioning Day_Yes']",603.4423301916178,169.89485398030502,0.049813966376656506
+8,"['Hour', 'Temperature(°C)', 'Humidity(%)', 'Visibility (10m)', 'Rainfall(mm)', 'Seasons_Winter', 'Holiday_No Holiday', 'Functioning Day_Yes']",598.5049702272387,162.4519436196608,0.06059738367532067
+9,"['Hour', 'Temperature(°C)', 'Humidity(%)', 'Visibility (10m)', 'Solar Radiation (MJ/m2)', 'Rainfall(mm)', 'Seasons_Winter', 'Holiday_No Holiday', 'Functioning Day_Yes']",598.8257734848535,162.0590126072979,0.05927127855455542
+10,"['Hour', 'Temperature(°C)', 'Humidity(%)', 'Wind speed (m/s)', 'Visibility (10m)', 'Solar Radiation (MJ/m2)', 'Rainfall(mm)', 'Seasons_Winter', 'Holiday_No Holiday', 'Functioning Day_Yes']",595.9945726480388,159.730041557716,0.06878527461669566

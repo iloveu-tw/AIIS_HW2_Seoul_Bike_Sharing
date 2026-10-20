@@ -1,0 +1,51 @@
+# Seoul Bike Sharing：多元線性迴歸與特徵選擇
+
+AIIS HW2 專案。以 Kaggle Seoul Bike Sharing 的每小時資料，在 CRISP-DM P1～P6 流程中比較特徵選擇如何改變租借量預測。**目前為開發中的正式分析版本，尚未部署 GitHub Pages。**
+
+## Live Demo
+
+GitHub Pages 尚未啟用。本機預覽：
+
+```bash
+python3 -m http.server 8765
+# 開啟 http://127.0.0.1:8765/site/index.html
+```
+
+網站現可切換兩個預測任務、四種方法及實際存在的特徵數，查看驗證 RMSE／R² 雙圖、逐列特徵組合與訓練結論。自訂 CSV 的介面已顯示，但瀏覽器計算引擎仍在開發，頁面會明確標示未啟用。
+
+## 預測問題與資料
+
+| 任務 | 目標 | 輸入時點 |
+|---|---|---|
+| Problem 1 | 當小時租借量 | 已取得當小時氣象與營運狀態 |
+| Problem 2 | 下一小時租借量 | 使用 `t` 時點已知欄位預測 `t+1`；不使用 `t+1` 實測欄位 |
+
+來源為 [Kaggle Seoul Bike Sharing Version 1](https://www.kaggle.com/datasets/joebeachcapital/seoul-bike-sharing/versions/1)。原始資料 8,760 筆、14 欄；12 個原始候選輸入展開為 14 個模型欄位。作業條件 `10 < 特徵數 < 30` 用於**總候選特徵數**，最佳入模數 `k` 可以較少。原始 CSV 不上傳至公開儲存庫；取得後放在 `data/raw/SeoulBikeData.csv`，`main.py` 會核對 SHA-256。
+
+## 重現正式分析
+
+使用 Python 3.13，安裝 `requirements.txt` 後執行：
+
+```bash
+python3 main.py
+```
+
+`main.py` 是唯一正式分析程式，標示 CRISP-DM P1～P6，產生 `results/current_hour/`、`results/next_hour/` 的研究定義、資料檢查、切分、特徵選擇、圖表及訓練結論，並輸出 `site/data/results.json` 供互動頁使用。既有 `src/00_*.py` 是 P0 來源驗證紀錄，不是另一套正式模型。
+
+目前比較全特徵、SelectKBest、Lasso CV 與 RFECV。Lasso CV 用 `GridSearchCV(Pipeline(StandardScaler, Lasso))` 實作，讓尺度轉換只在各內層訓練折擬合；Lasso path／RFE path 圖是逐 `k` 探索，與正式交叉驗證選擇分開標示。
+
+## 目前結果與限制
+
+目前正式程式的時間驗證推薦：當小時為 SelectKBest 的 13 欄；下一小時為 RFECV 的 6 欄。這是**本資料、此切分與已評估候選**下的結果，不代表普遍最優。留出期曾在選題推演中查看，並非完全盲測；完整數字和營運日分層結果見 [當小時結論](results/current_hour/P5/conclusion.md)與[下一小時結論](results/next_hour/P5/conclusion.md)。
+
+## 完整網站截圖
+
+正式 GitHub Pages 部署後，桌面／手機完整截圖與功能標註版會保存在 `docs/screenshots/`，並在此區展示；目前尚無已部署網站截圖，不以試跑示意圖冒充。
+
+## 規格與交接
+
+- [完整規格](docs/spec.md)
+- [開發前檢核與更正紀錄](docs/reports/2026-10-20-pre-development-check.md)
+- [選題試跑報告](docs/reports/2026-10-20-seoul-feasibility-dry-run.md)
+
+舊版 `docs/PROJECT_PLAN.md`、`docs/PROJECT_RULES.md` 與 P0 文件保留供追溯；實作以 `docs/spec.md` 的最新定義為準。
