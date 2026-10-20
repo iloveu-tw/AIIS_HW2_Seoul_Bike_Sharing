@@ -1,0 +1,49 @@
+name: Publish HW2 interactive site
+
+"on":
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out site and committed results
+        uses: actions/checkout@v6
+      - name: Validate the generated result bundle
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          bundle = json.loads(Path('site/data/results.json').read_text(encoding='utf-8'))
+          assert bundle['status'] == 'formal_analysis'
+          assert all(bundle['tasks'][name]['winner'] for name in ('current_hour', 'next_hour'))
+          assert Path('site/index.html').is_file()
+          print('Official result bundle and site entry point verified.')
+          PY
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
