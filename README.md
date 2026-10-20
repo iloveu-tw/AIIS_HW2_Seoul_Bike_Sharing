@@ -42,7 +42,15 @@ python3 main.py
 
 ## 完整網站截圖
 
-下列圖片直接擷取自 2026-10-20 已部署網站版本 `971401e`。原圖全部保留在 [`docs/screenshots/`](docs/screenshots/)，檔名、用途與雜湊見[截圖索引](docs/screenshots/INDEX.md)，可供繳交作業時下載與貼用。
+下列圖片直接擷取自 2026-10-20 已部署網站。原圖全部保留在 [`docs/screenshots/`](docs/screenshots/)，檔名、版本、用途與雜湊見[截圖索引](docs/screenshots/INDEX.md)，可供繳交作業時下載與貼用。原先版本 `971401e` 的截圖完整保留；跨方法圖表新增於版本 `487d37f`。
+
+### 新版跨方法 RMSE／R² 與特徵組合（`487d37f`）
+
+![上線網站的跨方法雙圖與正式特徵組合表；SelectKBest、RFE、Lasso 曲線及全特徵基準虛線](docs/screenshots/2026-10-20-487d37f-comparison-detail.png)
+
+![新版已部署網站完整桌面截圖，包含跨方法比較區](docs/screenshots/2026-10-20-487d37f-desktop-comparison.png)
+
+![新版已部署網站完整手機截圖，包含跨方法比較區](docs/screenshots/2026-10-20-487d37f-mobile-comparison.png)
 
 ### 功能區塊標註版（桌面）
 
